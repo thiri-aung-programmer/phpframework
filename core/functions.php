@@ -1,0 +1,37 @@
+<?php
+
+// function dbConnection() {
+//    ဒါမှန်ပြီးသား ဖတ်ရတာမလှလို့ class ဆောက်ပြီးထည့်လိုက်တာ
+//     try{
+//         return $pdo=new PDO("mysql:host=localhost;port=3308;dbname=test","root","");
+//     }catch(PDOException $e){
+//         echo $e->getMessage();
+//     }
+    
+// }
+
+function dd($data){
+    echo "<prep>";
+    die(var_dump($data));   
+}
+function view($n,$data=[]){
+    extract($data); // သူက သယ်လာတဲ့ arraykey ကို variable အဖြစ်ပြောင်းပေးတာ
+    return require "views/$n.view.php";
+}
+function redirect($uri){
+    header("Location: $uri");
+}
+function request($name){                 
+    if($_SERVER['REQUEST_METHOD']==='POST'){
+        return $_POST[$name];
+    }
+    if($_SERVER['REQUEST_METHOD']==='GET'){
+        return $_GET[$name];
+    }
+}
+// function fetchTasks($pdo){
+//        ဒါမှန်ပြီးသား ရေးပုံကအသေဖြစ်နေလို့ class ခွဲရေးလိုက်တာ
+//     $statement=$pdo->prepare("select * from tasks");
+//     $statement->execute();
+//     return  $statement->fetchAll(PDO::FETCH_OBJ);
+// }

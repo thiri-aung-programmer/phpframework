@@ -1,0 +1,82 @@
+<?php
+namespace controllers;
+use core\App;
+
+class PagesController{   
+    public function home(){                           
+        // indexController ထဲကဟာ အကုန်ကူးလာ                                         
+        $users=App::get("database")->selectAll("admin_users");  
+        // $pswd=MD5("mgmg123");
+    //    $check=App::get("database")->userChecker("‌admin_users","mgmg123@gmail.com",$pswd,1);       
+          $roles=App::get("database")->selectAll("roles");  
+         view("index",["users"=>$users,
+                        "roles"=>$roles
+                        ]); // အပေါ်က $users ကိုပါ သယ်လာတာ။ 
+                       
+                       
+    }
+   
+     public function admin_user(){
+        $allinfos=App::get("database")->selectAllInfo("admin_users","roles");   
+       
+         view("user",["allinfos"=>$allinfos]);  
+         // view("admin/user");  
+        // view("admin/user",["allinfos"=>App::get("database")->selectAllInfo("admin_users","roles")]);                                        
+    }
+
+    public function check(){                       
+        $table="admin_users";     
+        $email=request('email');
+        $pswd=MD5(request('password'));
+        $roleid=request('role');
+        
+        $id=App::get("database")->userChecker([
+        'email' => request("email"),
+        'password' => request("password"),
+        'roleid' => request("role")
+    ],"admin_users");  
+        // echo $id;
+        // print_r($roles["id"]);
+        if($id=="") {
+            $error="<h1 class='text-danger text-center fw-bold'>Please Try Again!!</h1>";
+             $roles=App::get("database")->selectAll("roles");
+              view("index",["roles"=>$roles,"error"=>$error]);
+        }  
+        else{
+             $rolename=App::get("database")->selectRole($id);
+             redirect($rolename);
+           
+        }                               
+      
+    }
+    public function admin(){
+        view("admin");                           
+    }
+    public function waiter(){
+        view("waiter");                           
+    }
+    public function chef(){
+        view("chef");                           
+    }
+   
+    public function crud(){
+        view("crud");
+    }
+    
+    public function about(){                                   
+        view("about");                
+    }
+    public function contact(){
+        view("contact");
+    }
+    public function createUser(){
+        
+        App::get("database")->insert([
+    // 'uname' => $_POST['name']
+    'uname' => request("name")
+    ],"users");
+ 
+    // header("Location:/"); ဒါက အသေမို့ အောက်ကလို dynamically ပြင်ရေး
+        redirect("/");
+    }
+}

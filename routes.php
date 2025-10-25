@@ -1,0 +1,35 @@
+<?php
+
+
+//www.localhost:8000 ဒါက default route
+    
+// $routes=[
+// ];
+// $router->register([
+//     ""=>"controllers/IndexController.php",
+//     "about"=>"controllers/AboutController.php",
+//     "contactus"=>"controllers/ContactController.php",
+//     "names"=>"controllers/add-name.php"
+
+// ]);
+// ဒါက Laravel 7 ရဲ့ route system 
+// $router->get("","PagesController@home");
+// $router->get("about","PagesController@about");
+// $router->get("contactus","PagesController@contact");
+// $router->post("names","PagesController@createUser");
+// $router->get("users","UserController@index");
+
+// ဒါက အခုနောက်ဆုံး Laravel 8 ရဲ့ ပုံစံ
+use controllers\PagesController;
+use controllers\UsersController;
+$router->get('',[PagesController::class,"home"]);
+$router->get('about',[PagesController::class,"about"]);
+$router->get('contactus',[PagesController::class,"contact"]);
+$router->post('names',[PagesController::class,"createUser"]);
+// $router->get('users',[UserController::class,"index"]);
+$router->get('admin',[PagesController::class,"admin"]);
+$router->get('chef',[PagesController::class,"chef"]);
+$router->get('waiter',[PagesController::class,"waiter"]);
+$router->post('check',[PagesController::class,"check"]); 
+$router->get('adminuser',[PagesController::class,"admin_user"]);
+$router->get('admincrud',[PagesController::class,"crud"]);

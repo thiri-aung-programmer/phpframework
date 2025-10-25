@@ -1,0 +1,28 @@
+INSERT INTO `admin_users` (`id`, `name`, `username`, `role_id`, `phone`, `email`, `address`, `pswd`, `gender`, `is_active`) VALUES (NULL, 'AungAung', 'AungAung', '2', '09123456', 'aungaung@gmail.com', 'Taungyi', MD5('aungaung123'), '0', '0');
+
+function hasPermission($user_id, $permission_name, $pdo) {
+    $sql = "
+        SELECT COUNT(*) 
+        FROM users u
+        JOIN roles r ON u.role_id = r.id
+        JOIN role_permissions rp ON r.id = rp.role_id
+        JOIN permissions p ON rp.permission_id = p.id
+        WHERE u.id = :user_id
+        AND p.permission_name = :permission_name
+    ";
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute([
+        ':user_id' => $user_id,
+        ':permission_name' => $permission_name
+    ]);
+    return $stmt->fetchColumn() > 0;
+}
+
+
+// ဒါက role အလိုက် permission တွေ ပြတဲ့ table ထုတ်တာ 
+SELECT u.name,u.email,r.name,f.name,p.name
+        FROM admin_users u
+        JOIN roles r ON u.role_id = r.id
+        JOIN role_permissions rp ON r.id = rp.role_id
+        JOIN permissions p ON rp.permissions_id = p.id
+        JOIN features f ON p.feature_id=f.id;
