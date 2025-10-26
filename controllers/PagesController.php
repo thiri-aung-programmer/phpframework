@@ -29,6 +29,7 @@ class PagesController{
         $email=request('email');
         $pswd=MD5(request('password'));
         $roleid=request('role');
+
         
         $id=App::get("database")->userChecker([
         'email' => request("email"),
@@ -44,19 +45,46 @@ class PagesController{
         }  
         else{
              $rolename=App::get("database")->selectRole($id);
+             $_SESSION['email']=$email;
+             $_SESSION['id']=$id;
+             $_SESSION['role']=$rolename;
              redirect($rolename);
+             
+
            
         }                               
       
     }
     public function admin(){
-        view("admin");                           
+        
+        if (!isset($_SESSION['role']) || $_SESSION['role'] != 'admin') {
+        view("noaccess");
     }
+    else{
+        view("admin");     
+    }
+
+
+                              
+    }
+
     public function waiter(){
-        view("waiter");                           
+        if (!isset($_SESSION['role']) || $_SESSION['role'] != 'waiter') {
+        view("noaccess");
+    }
+    else{
+        view("waiter");     
+    }
+                                 
     }
     public function chef(){
-        view("chef");                           
+         if (!isset($_SESSION['role']) || $_SESSION['role'] != 'chef') {
+        view("noaccess");
+        }
+        else{
+        view("chef");    
+    }
+                                 
     }
    
     public function crud(){

@@ -28,6 +28,7 @@ $router->get('contactus',[PagesController::class,"contact"]);
 $router->post('names',[PagesController::class,"createUser"]);
 // $router->get('users',[UserController::class,"index"]);
 $router->get('admin',[PagesController::class,"admin"]);
+$router->get('noaccess',[PagesController::class,"noaccess"]);
 $router->get('chef',[PagesController::class,"chef"]);
 $router->get('waiter',[PagesController::class,"waiter"]);
 $router->post('check',[PagesController::class,"check"]); 
