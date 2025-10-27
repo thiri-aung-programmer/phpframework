@@ -10,4 +10,4 @@
 </head>
 <body>
    
-   <?php require "views/components/adminnavBar.php"; ?>
+   <?php require "views/components/waiternavBar.php"; ?>

@@ -34,3 +34,4 @@ $router->get('waiter',[PagesController::class,"waiter"]);
 $router->post('check',[PagesController::class,"check"]); 
 $router->get('adminuser',[PagesController::class,"admin_user"]);
 $router->get('admincrud',[PagesController::class,"crud"]);
+$router->get('logout',[PagesController::class,"logout"]);

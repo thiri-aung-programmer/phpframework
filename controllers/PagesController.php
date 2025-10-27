@@ -77,6 +77,10 @@ class PagesController{
     }
                                  
     }
+    public function logout(){
+        session_unset();
+       redirect("/");
+    }
     public function chef(){
          if (!isset($_SESSION['role']) || $_SESSION['role'] != 'chef') {
         view("noaccess");
