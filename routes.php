@@ -32,6 +32,7 @@ $router->get('noaccess',[PagesController::class,"noaccess"]);
 $router->get('chef',[PagesController::class,"chef"]);
 $router->get('waiter',[PagesController::class,"waiter"]);
 $router->post('check',[PagesController::class,"check"]); 
-$router->get('adminuser',[PagesController::class,"admin_user"]);
 $router->get('admincrud',[PagesController::class,"crud"]);
 $router->get('logout',[PagesController::class,"logout"]);
+$router->get('user_viewupdatedelete',[PagesController::class,"user_viewupdatedelete"]);
+$router->get('user_view',[PagesController::class,"user_view"]);

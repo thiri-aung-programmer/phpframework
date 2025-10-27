@@ -10,6 +10,7 @@
             <th>Address</th>
             <th>Gender</th>
             <th>Role</th>
+            <th>Permission</th>
         </tr>
             <prep>
          <?php 
@@ -36,6 +37,9 @@
             <th><?= $info['address']; ?></th>
             <th><?= $gender; ?></th>
             <th><?= $info['name'][1]; ?></th>
+            <th>
+                <a href="" disable="disable" class="btn btn-dark" onclick="alert('Sorry You can do nothing')">View Only</a>
+            </th>
         </tr>  
 
         <?php endforeach; ?>

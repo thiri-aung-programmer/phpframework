@@ -16,10 +16,17 @@ class PagesController{
                        
     }
    
-     public function admin_user(){
+     public function user_viewupdatedelete(){
         $allinfos=App::get("database")->selectAllInfo("admin_users","roles");   
        
-         view("user",["allinfos"=>$allinfos]);  
+         view("user_viewupdatedelete",["allinfos"=>$allinfos]);  
+         // view("admin/user");  
+        // view("admin/user",["allinfos"=>App::get("database")->selectAllInfo("admin_users","roles")]);                                        
+    }
+    public function user_view(){
+        $allinfos=App::get("database")->selectAllInfo("admin_users","roles");   
+       
+         view("user_view",["allinfos"=>$allinfos]);   
          // view("admin/user");  
         // view("admin/user",["allinfos"=>App::get("database")->selectAllInfo("admin_users","roles")]);                                        
     }
@@ -28,9 +35,7 @@ class PagesController{
         $table="admin_users";     
         $email=request('email');
         $pswd=MD5(request('password'));
-        $roleid=request('role');
-
-        
+        $roleid=request('role');        
         $id=App::get("database")->userChecker([
         'email' => request("email"),
         'password' => request("password"),
@@ -45,6 +50,20 @@ class PagesController{
         }  
         else{
              $rolename=App::get("database")->selectRole($id);
+              $permissions=App::get("database")->selectPermissions($id);
+              $num=0;
+            //    var_dump($permissions);
+            //    die();
+              foreach($permissions as $p)
+              {
+                // echo $p["email"];
+                // echo $p["name"][0]."<br>";
+                // echo $p["name"][1]."<br>";
+                // echo $p["name"][2]."<br>";
+                $_SESSION['permission'][$num++]=$p["name"][0];
+                $_SESSION['feature'][$num++]=$p["name"][0];
+              }
+            //   die();
              $_SESSION['email']=$email;
              $_SESSION['id']=$id;
              $_SESSION['role']=$rolename;

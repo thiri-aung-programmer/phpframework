@@ -36,6 +36,17 @@ class QueryBuilder{
         $row=$rolename=$statement->fetch();
         return $row['name']; 
     }
+    public function selectPermissions($id){
+        $statement=$this->pdo->prepare("SELECT p.name,f.name
+                                        FROM admin_users u 
+                                        JOIN roles r ON u.role_id=r.id 
+                                        JOIN role_permissions rp ON r.id =rp.role_id 
+                                        JOIN permissions p ON p.id =rp.permissions_id
+                                        JOIN features f ON f.id=p.feature_id WHERE u.id=$id;");
+        $statement->execute();
+        $row=$statement->fetchAll(PDO::FETCH_NAMED);
+        return $row; 
+    }
     public function selectAll($table){
 
         $statement=$this->pdo->prepare("select * from $table");
