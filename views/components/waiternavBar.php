@@ -21,7 +21,7 @@
             Management
           </a>
           <ul class="dropdown-menu" aria-labelledby="menu1">
-            <li><a class="dropdown-item" href="adminuser">AllUsers</a></li>
+            <li><a class="dropdown-item" href="user_read">AllUsersView</a></li>
             <li><a class="dropdown-item" href="admincrud">Insert Update Delete</a></li>
            
           </ul>

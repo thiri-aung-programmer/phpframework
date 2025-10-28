@@ -21,7 +21,7 @@
             Management
           </a>
           <ul class="dropdown-menu" aria-labelledby="menu1">
-            <li><a class="dropdown-item" href="user_viewupdatedelete">AllUsers</a></li>
+            <li><a class="dropdown-item" href="user_crud">AllUsers</a></li>
             <li><a class="dropdown-item" href="admincrud">Insert Update Delete</a></li>
            
           </ul>
@@ -33,7 +33,7 @@
             Permission Management
           </a>
           <ul class="dropdown-menu" aria-labelledby="menu2">
-            <li><a class="dropdown-item" href="?p=urp">Users and Their Roles By Permission</a></li>
+            <li><a class="dropdown-item" href="user_permissions">Users and Their Roles By Permission</a></li>
             <li><a class="dropdown-item" href="#">Features</a></li>
             <li><a class="dropdown-item" href="#">permissions</a></li>
           </ul>

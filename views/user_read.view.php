@@ -1,4 +1,4 @@
-<?php require 'views/partials/adminheader.php'; ?>
+<?php require 'views/partials/userheader.php'; ?>
 <div>
     <h2 class="text-success bg-secondary-subtle p-3 text-center fw-bold">All Of The Users Using Our Website</h2>
     <table class="table table-striped table-light">

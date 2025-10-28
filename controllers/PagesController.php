@@ -16,21 +16,39 @@ class PagesController{
                        
     }
    
-     public function user_viewupdatedelete(){
-        $allinfos=App::get("database")->selectAllInfo("admin_users","roles");   
-       
-         view("user_viewupdatedelete",["allinfos"=>$allinfos]);  
-         // view("admin/user");  
-        // view("admin/user",["allinfos"=>App::get("database")->selectAllInfo("admin_users","roles")]);                                        
-    }
-    public function user_view(){
-        $allinfos=App::get("database")->selectAllInfo("admin_users","roles");   
-       
-         view("user_view",["allinfos"=>$allinfos]);   
-         // view("admin/user");  
-        // view("admin/user",["allinfos"=>App::get("database")->selectAllInfo("admin_users","roles")]);                                        
-    }
+     public function user_crud(){
+        
 
+         if (!isset($_SESSION['role']) || $_SESSION['role'] != 'admin') {
+                 view("noaccess");
+             }
+        else{
+             if(in_array("user",$_SESSION["permission"],true) && in_array("crud",$_SESSION["feature"],true))
+            {
+                 $allinfos=App::get("database")->selectAllInfo("admin_users","roles");  
+             view("user_crud",["allinfos"=>$allinfos]); 
+            }   
+            else{
+                 view("noaccess");
+            }
+         }       
+        
+         // view("admin/user");  
+        // view("admin/user",["allinfos"=>App::get("database")->selectAllInfo("admin_users","roles")]);                                        
+    }
+    public function user_read(){
+
+        $allinfos=App::get("database")->selectAllInfo("admin_users","roles");      
+        
+
+         if (!isset($_SESSION['role']) ) {
+                view("noaccess");
+        }
+        else{
+                view("user_read",["allinfos"=>$allinfos]);
+                                              
+            }
+    }
     public function check(){                       
         $table="admin_users";     
         $email=request('email');
@@ -61,7 +79,7 @@ class PagesController{
                 // echo $p["name"][1]."<br>";
                 // echo $p["name"][2]."<br>";
                 $_SESSION['permission'][$num++]=$p["name"][0];
-                $_SESSION['feature'][$num++]=$p["name"][0];
+                $_SESSION['feature'][$num++]=$p["name"][1];
               }
             //   die();
              $_SESSION['email']=$email;
@@ -87,6 +105,20 @@ class PagesController{
                               
     }
 
+    public function user_permissions(){
+        
+        $allinfos=App::get("database")->selectAllUsersByPermissions();   
+
+         if (!isset($_SESSION['role']) || $_SESSION['role'] != 'admin') {
+        view("noaccess");
+             }
+        else{
+             view("user_permissions",["allinfos"=>$allinfos]);    
+         }
+
+
+                              
+    }
     public function waiter(){
         if (!isset($_SESSION['role']) || $_SESSION['role'] != 'waiter') {
         view("noaccess");

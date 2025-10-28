@@ -15,8 +15,8 @@
             <prep>
          <?php 
          
-        //   print_r($allinfos);
-           
+           print_r(implode("",$_SESSION['permission']) . "\n");
+           print_r(implode("",$_SESSION['feature']) . "\n");
          ?>
          </prep>
         <?php foreach ($allinfos as $info): ?>
