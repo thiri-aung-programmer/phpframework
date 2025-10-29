@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3308
--- Generation Time: Oct 25, 2025 at 03:46 PM
+-- Generation Time: Oct 29, 2025 at 04:36 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -64,9 +64,9 @@ CREATE TABLE `features` (
 --
 
 INSERT INTO `features` (`id`, `name`) VALUES
-(1, 'view'),
-(2, 'view and update'),
-(3, 'view, update and delete');
+(1, 'user'),
+(2, 'report'),
+(3, 'stock');
 
 -- --------------------------------------------------------
 
@@ -85,15 +85,13 @@ CREATE TABLE `permissions` (
 --
 
 INSERT INTO `permissions` (`id`, `name`, `feature_id`) VALUES
-(1, 'user_management', 1),
-(2, 'stock_management', 2),
-(3, 'report', 3),
-(4, 'user_management', 2),
-(5, 'user_management', 3),
-(6, 'stock_management', 1),
-(7, 'stock_management', 3),
-(8, 'report', 1),
-(9, 'report', 2);
+(1, 'crud', 1),
+(2, 'crud', 2),
+(3, 'crud', 3),
+(4, 'read', 1),
+(5, 'read', 2),
+(6, 'read', 3),
+(7, 'readupdate', 3);
 
 -- --------------------------------------------------------
 
@@ -132,15 +130,15 @@ CREATE TABLE `role_permissions` (
 --
 
 INSERT INTO `role_permissions` (`id`, `role_id`, `permissions_id`) VALUES
-(1, 1, 3),
-(2, 1, 5),
-(3, 1, 7),
-(4, 2, 1),
-(5, 2, 2),
-(6, 2, 8),
-(7, 3, 1),
-(8, 3, 6),
-(9, 3, 8);
+(1, 1, 1),
+(2, 1, 2),
+(3, 1, 3),
+(4, 2, 4),
+(5, 2, 5),
+(6, 2, 7),
+(7, 3, 4),
+(8, 3, 5),
+(9, 3, 6);
 
 --
 -- Indexes for dumped tables
