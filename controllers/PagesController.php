@@ -23,7 +23,7 @@ class PagesController{
                  view("noaccess");
              }
         else{
-             if(in_array("user",$_SESSION["permission"],true) && in_array("crud",$_SESSION["feature"],true))
+             if(isPermission("user","crud"))
             {
                  $allinfos=App::get("database")->selectAllInfo("admin_users","roles");  
              view("user_crud",["allinfos"=>$allinfos]); 
@@ -31,7 +31,7 @@ class PagesController{
             else{
                  view("noaccess");
             }
-         }       
+         }                                        
         
          // view("admin/user");  
         // view("admin/user",["allinfos"=>App::get("database")->selectAllInfo("admin_users","roles")]);                                        

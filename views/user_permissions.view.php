@@ -4,9 +4,9 @@
     <table class="table table-striped table-light w-75 m-auto text-center">
         <tr>
             <th>No.</th>
-            <th>Role</th>            
-            <th>Permission</th> 
-            <th>Feature</th>          
+            <th>Role</th>
+            <th>Feature</th>    
+            <th>Permission</th>       
         </tr>
             <prep>
          <?php 
@@ -21,8 +21,8 @@
         <tr>
             <th><?= $no++; ?></th>
             <th><?= $info['Role']; ?></th>
-             <th><?= $info['Permission']; ?></th>
             <th><?= $info['Feature']; ?></th>
+            <th><?= $info['Permission']; ?></th>
            
             
         </tr>  

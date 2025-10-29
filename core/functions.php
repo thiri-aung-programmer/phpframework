@@ -29,6 +29,12 @@ function request($name){
         return $_GET[$name];
     }
 }
+
+
+//in_array("user",$_SESSION["feature"],true) && in_array("crud",$_SESSION["permission"],true)
+function isPermission($feature,$permission){
+    return in_array($feature,$_SESSION["feature"],true) && in_array($permission,$_SESSION["permission"],true);
+}
 // function fetchTasks($pdo){
 //        ဒါမှန်ပြီးသား ရေးပုံကအသေဖြစ်နေလို့ class ခွဲရေးလိုက်တာ
 //     $statement=$pdo->prepare("select * from tasks");
