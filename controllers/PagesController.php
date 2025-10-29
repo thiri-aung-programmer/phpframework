@@ -45,7 +45,14 @@ class PagesController{
                 view("noaccess");
         }
         else{
+            if(isPermission("user","read")){
                 view("user_read",["allinfos"=>$allinfos]);
+            }
+            else{
+                view("noaccess");
+            }
+               
+            
                                               
             }
     }
