@@ -23,6 +23,8 @@ class PagesController{
                  view("noaccess");
              }
         else{
+            // echo array_search("crud",$_SESSION["permission"]);
+            // die();
              if(isPermission("user","crud"))
             {
                  $allinfos=App::get("database")->selectAllInfo("admin_users","roles");  
@@ -76,7 +78,7 @@ class PagesController{
         else{
              $rolename=App::get("database")->selectRole($id);
               $permissions=App::get("database")->selectPermissions($id);
-              $num=0;
+              $num=0;$num1=0;
             //    var_dump($permissions);
             //    die();
               foreach($permissions as $p)
@@ -86,7 +88,7 @@ class PagesController{
                 // echo $p["name"][1]."<br>";
                 // echo $p["name"][2]."<br>";
                 $_SESSION['permission'][$num++]=$p["name"][0];
-                $_SESSION['feature'][$num++]=$p["name"][1];
+                $_SESSION['feature'][$num1++]=$p["name"][1];
               }
             //   die();
              $_SESSION['email']=$email;
