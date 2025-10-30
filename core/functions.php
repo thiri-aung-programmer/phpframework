@@ -33,7 +33,7 @@ function request($name){
 
 //in_array("user",$_SESSION["feature"],true) && in_array("crud",$_SESSION["permission"],true)
 function isPermission($feature,$permission){
-    return in_array($feature,$_SESSION["feature"],true) && in_array($permission,$_SESSION["permission"],true);
+    return (in_array($feature,$_SESSION["feature"],true) && in_array($permission,$_SESSION["permission"],true))&&(array_search($feature,$_SESSION["feature"])==array_search($permission,$_SESSION["permission"]));
 }
 // function fetchTasks($pdo){
 //        ဒါမှန်ပြီးသား ရေးပုံကအသေဖြစ်နေလို့ class ခွဲရေးလိုက်တာ
