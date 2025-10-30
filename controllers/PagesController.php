@@ -28,7 +28,8 @@ class PagesController{
              if(isPermission("user","crud"))
             {
                  $allinfos=App::get("database")->selectAllInfo("admin_users","roles");  
-             view("user_crud",["allinfos"=>$allinfos]); 
+                 $roles=App::get("database")->selectAll("roles");  
+             view("user_crud",["allinfos"=>$allinfos,"roles"=>$roles]); 
             }   
             else{
                  view("noaccess");
