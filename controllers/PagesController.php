@@ -204,4 +204,4 @@ class PagesController{
                  $roles=App::get("database")->selectAll("roles");  
         view("user_crud",["allinfos"=>$allUsers,"roles"=>$roles]); 
     }
-}
+} 
