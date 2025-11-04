@@ -58,7 +58,7 @@
                          <label for="">Name</label>
                     </div>
                     <div class="col-md-8 col-10">
-                         <input type="text" class="form-control" id="name" name="name">
+                         <input type="text" class="form-control" id="name" name="name" require>
                     </div>
                  </div>
 
@@ -67,7 +67,7 @@
                          <label for="">User Name</label>
                     </div>
                     <div class="col-md-8 col-10">
-                         <input type="text" class="form-control" id="uname" name="uname">
+                         <input type="text" class="form-control" id="uname" name="uname" require>
                     </div>
                  </div>
 
@@ -76,7 +76,7 @@
                          <label for="">Email</label>
                     </div>
                     <div class="col-md-8 col-10">
-                         <input type="email" class="form-control" id="email" name="email">
+                         <input type="email" class="form-control" id="email" name="email" require>
                     </div>
                  </div>
 
@@ -85,7 +85,7 @@
                          <label for="">Password</label>
                     </div>
                     <div class="col-md-8 col-10">
-                         <input type="password" class="form-control" id="pswd" name="pswd">
+                         <input type="password" class="form-control" id="pswd" name="pswd" require>
                     </div>
                  </div>
 
@@ -94,8 +94,17 @@
                          <label for="">Confirm Password</label>
                     </div>
                     <div class="col-md-8 col-10">
-                         <input type="password" class="form-control" id="confirm" name="confirm">
+                         <input type="password" class="form-control" id="confirm" name="confirm" require onkeyup="checkPswd();">
                     </div>
+                 </div>
+                 <div class="row m-3">
+                     <div class="col-md-4  col-10">
+                         
+                    </div>
+                     <div class="col-md-8 col-10">
+                         <label for="" id="message"></label>
+                    </div>
+
                  </div>
 
                 <div class="row m-3">

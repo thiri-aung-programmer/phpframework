@@ -1,7 +1,7 @@
 
 // alert("Hi");
 let checkPswd=()=>{
-const password = document.getElementById("password");
+const password = document.getElementById("pswd");
 const confirm = document.getElementById("confirm");
 const message = document.getElementById("message");
 
@@ -9,4 +9,7 @@ const message = document.getElementById("message");
      message.textContent = "Passwords do not match";
     message.style.color = "red"; 
   } 
+  else{
+     message.textContent="";
+  }
 }
