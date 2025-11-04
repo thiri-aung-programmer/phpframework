@@ -51,7 +51,7 @@
 
      <div class="w-75 m-auto">
         <h2 class="text-success bg-secondary-subtle p-3 text-center fw-bold mt-3">Insert New User</h2>
-            <form class="w-100 p-3 bg-light shadow-sm">
+            <form class="w-100 p-3 bg-light shadow-sm" action="user_crud" method="post">
 
                  <div class="row m-3">
                     <div class="col-md-4  col-10">
@@ -67,7 +67,7 @@
                          <label for="">User Name</label>
                     </div>
                     <div class="col-md-8 col-10">
-                         <input type="text" class="form-control" id="uname" name="uname" require>
+                         <input type="text" class="form-control" id="username" name="username" require>
                     </div>
                  </div>
 
@@ -144,7 +144,7 @@
                          <label for="">Active</label>
                     </div>
                     <div class="col-md-8 col-10">
-                        <select name="active" class="form-control mb-2">
+                        <select name="is_active" class="form-control mb-2">
                             
                                 <option value="0">Active</option>
                                 <option value="1">Inactive</option>
@@ -158,7 +158,7 @@
                          <label for="">Role</label>
                     </div>
                     <div class="col-md-8 col-10">
-                        <select name="role" class="form-control mb-2">
+                        <select name="role_id" class="form-control mb-2">
                             <!-- <option  selected hidden disabled>Choose Your Role</option> -->
                             <?php foreach ($roles as $role): ?>
                                 <option value="<?= $role->id; ?>"><?= htmlspecialchars($role->name); ?></option>

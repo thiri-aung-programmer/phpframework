@@ -27,9 +27,9 @@ class PagesController{
             // die();
              if(isPermission("user","crud"))
             {
-                 $allinfos=App::get("database")->selectAllInfo("admin_users","roles");  
+                 $allUsers=App::get("database")->selectAllInfo("admin_users","roles");  
                  $roles=App::get("database")->selectAll("roles");  
-             view("user_crud",["allinfos"=>$allinfos,"roles"=>$roles]); 
+             view("user_crud",["allinfos"=>$allUsers,"roles"=>$roles]); 
             }   
             else{
                  view("noaccess");
@@ -41,7 +41,7 @@ class PagesController{
     }
     public function user_read(){
 
-        $allinfos=App::get("database")->selectAllInfo("admin_users","roles");      
+        $allInfos=App::get("database")->selectAllInfo("admin_users","roles");      
         
 
          if (!isset($_SESSION['role']) ) {
@@ -117,13 +117,13 @@ class PagesController{
 
     public function user_permissions(){
         
-        $allinfos=App::get("database")->selectAllUsersByPermissions();   
+        $allInfos=App::get("database")->selectAllUsersByPermissions();   
 
          if (!isset($_SESSION['role']) || $_SESSION['role'] != 'admin') {
             view("noaccess");
              }
         else{
-             view("user_permissions",["allinfos"=>$allinfos]);    
+             view("user_permissions",["allinfos"=>$allInfos]);    
          }
 
 
@@ -188,10 +188,20 @@ class PagesController{
         
         App::get("database")->insert([
     // 'uname' => $_POST['name']
-    'uname' => request("name")
-    ],"users");
+    //admin_users(name,username,role_id,phone,email,address,pswd,gender,is_active)
+    'name' => request("name"),
+    'username'=>request("username"),
+    'role_id'=>request("role_id"),
+    'phone'=>request("phone"),
+    'email'=>request("email"),
+    'address'=>request("address"),
+    'pswd'=>md5(request("pswd")),
+    'gender'=>request("gender"),
+    'is_active'=>request("is_active")
+    ],"admin_users");
  
-    // header("Location:/"); ဒါက အသေမို့ အောက်ကလို dynamically ပြင်ရေး
-        redirect("/");
+                 $allUsers=App::get("database")->selectAllInfo("admin_users","roles");  
+                 $roles=App::get("database")->selectAll("roles");  
+        view("user_crud",["allinfos"=>$allUsers,"roles"=>$roles]); 
     }
 }

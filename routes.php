@@ -25,7 +25,7 @@ use controllers\UsersController;
 $router->get('',[PagesController::class,"home"]);
 $router->get('about',[PagesController::class,"about"]);
 $router->get('contactus',[PagesController::class,"contact"]);
-$router->post('names',[PagesController::class,"createUser"]);
+$router->post('user_crud',[PagesController::class,"createUser"]);
 // $router->get('users',[UserController::class,"index"]);
 $router->get('admin',[PagesController::class,"admin"]);
 $router->get('noaccess',[PagesController::class,"noaccess"]);
