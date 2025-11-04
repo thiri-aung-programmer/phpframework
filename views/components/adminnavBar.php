@@ -34,8 +34,8 @@
           </a>
           <ul class="dropdown-menu" aria-labelledby="menu2">
             <li><a class="dropdown-item" href="user_permissions">Users and Their Roles By Permission</a></li>
-            <li><a class="dropdown-item" href="#">Features</a></li>
-            <li><a class="dropdown-item" href="#">permissions</a></li>
+            <li><a class="dropdown-item" href="features_crud">Features</a></li>
+            <li><a class="dropdown-item" href="permissions_crud">permissions</a></li>
           </ul>
         </li>
 

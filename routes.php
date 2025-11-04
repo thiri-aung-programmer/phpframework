@@ -37,3 +37,5 @@ $router->get('logout',[PagesController::class,"logout"]);
 $router->get('user_crud',[PagesController::class,"user_crud"]);
 $router->get('user_read',[PagesController::class,"user_read"]);
 $router->get('user_permissions',[PagesController::class,"user_permissions"]);
+$router->get('features_crud',[PagesController::class,"features_crud"]);
+$router->get("permissions_crud",[PagesController::class,"permissions_crud"]);

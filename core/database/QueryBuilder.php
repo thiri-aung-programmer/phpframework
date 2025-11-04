@@ -76,6 +76,24 @@ class QueryBuilder{
         
         return $statement->fetchAll(PDO::FETCH_NAMED);
     }
+    public function selectAllPermissions(){
+         $statement=$this->pdo->prepare("SELECT roles.name AS Role, f.name AS Feature, p.name AS Permission
+                                        FROM permissions p JOIN features f ON p.feature_id = f.id
+                                        JOIN role_permissions rp ON rp.permissions_id = p.id 
+                                        JOIN roles ON rp.role_id = roles.id; 
+                                        ");
+       
+        $statement->execute();
+        
+        return $statement->fetchAll(PDO::FETCH_NAMED);
+    }
+    public function selectAllFeatures(){
+         $statement=$this->pdo->prepare("SELECT * FROM features;");
+       
+        $statement->execute();
+        
+        return $statement->fetchAll(PDO::FETCH_NAMED);
+    }
     public function insert($dataArr,$table){
 
         //         $database->insert([

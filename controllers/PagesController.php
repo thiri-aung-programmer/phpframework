@@ -120,7 +120,7 @@ class PagesController{
         $allinfos=App::get("database")->selectAllUsersByPermissions();   
 
          if (!isset($_SESSION['role']) || $_SESSION['role'] != 'admin') {
-        view("noaccess");
+            view("noaccess");
              }
         else{
              view("user_permissions",["allinfos"=>$allinfos]);    
@@ -128,6 +128,28 @@ class PagesController{
 
 
                               
+    }
+    public function permissions_crud(){
+         $allinfos=App::get("database")->selectAllPermissions();   
+
+         if (!isset($_SESSION['role']) || $_SESSION['role'] != 'admin') {
+            view("noaccess");
+             }
+        else{
+             view("permissions_crud",["allinfos"=>$allinfos]);    
+         }
+
+    }
+    public function features_crud(){
+         $allinfos=App::get("database")->selectAllFeatures();   
+
+         if (!isset($_SESSION['role']) || $_SESSION['role'] != 'admin') {
+            view("noaccess");
+             }
+        else{
+             view("features_crud",["allinfos"=>$allinfos]);    
+         }
+
     }
     public function waiter(){
         if (!isset($_SESSION['role']) || $_SESSION['role'] != 'waiter') {
