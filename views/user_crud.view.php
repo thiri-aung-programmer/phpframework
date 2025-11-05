@@ -2,7 +2,7 @@
 <div>
 
    
-    <h2 class="text-success bg-secondary-subtle p-3 text-center fw-bold mt-3">All Of The Users Using Our Website</h2>
+    <h2 class="text-success bg-secondary-subtle p-3 text-center fw-bold">All Of The Users Using Our Website</h2>
     <table class="table table-striped table-light">
         <tr>
             <th>UserID</th>

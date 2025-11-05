@@ -117,40 +117,22 @@ class PagesController{
 
     public function user_permissions(){
         
-        $allInfos=App::get("database")->selectAllUsersByPermissions();   
+        $all_infos=App::get("database")->selectAllUsersByPermissions();   
+         
 
          if (!isset($_SESSION['role']) || $_SESSION['role'] != 'admin') {
             view("noaccess");
              }
         else{
-             view("user_permissions",["allinfos"=>$allInfos]);    
+             view("user_permissions",["allinfos"=>$all_infos]);    
          }
 
 
                               
     }
-    public function permissions_crud(){
-         $allinfos=App::get("database")->selectAllPermissions();   
-
-         if (!isset($_SESSION['role']) || $_SESSION['role'] != 'admin') {
-            view("noaccess");
-             }
-        else{
-             view("permissions_crud",["allinfos"=>$allinfos]);    
-         }
-
-    }
-    public function features_crud(){
-         $allinfos=App::get("database")->selectAllFeatures();   
-
-         if (!isset($_SESSION['role']) || $_SESSION['role'] != 'admin') {
-            view("noaccess");
-             }
-        else{
-             view("features_crud",["allinfos"=>$allinfos]);    
-         }
-
-    }
+    
+   
+    
     public function waiter(){
         if (!isset($_SESSION['role']) || $_SESSION['role'] != 'waiter') {
         view("noaccess");
@@ -184,7 +166,81 @@ class PagesController{
     public function contact(){
         view("contact");
     }
-    public function createUser(){
+
+    public function permissions_crud(){
+         $all_permissions=App::get("database")->selectAllPermissions();    
+          $roles=App::get("database")->selectAll("roles");
+           $features=App::get("database")->selectAll("features");
+
+         if (!isset($_SESSION['role']) || $_SESSION['role'] != 'admin') {
+            view("noaccess");
+             }
+        else{
+             view("permissions_crud",["allpermissions"=>$all_permissions,
+                                        "roles"=>$roles,
+                                        "features"=>$features
+                                        ]);    
+         }
+
+    }
+    public function create_permission(){
+        $permission_id=App::get('database')->insertReturnID([
+            'name'=>request("name"),
+            "feature_id"=>request("feature_id")
+        ],"permissions");
+       
+        App::get('database')->insert([
+            'role_id'=>request("role_id"),
+            'permissions_id'=>$permission_id
+        ],"role_permissions");
+
+         $all_permissions=App::get("database")->selectAllPermissions();    
+          $roles=App::get("database")->selectAll("roles");
+           $features=App::get("database")->selectAll("features");
+
+        view("permissions_crud",["allpermissions"=>$all_permissions,
+                                        "roles"=>$roles,
+                                        "features"=>$features
+                                        ]);    
+
+    }
+     public function features_crud(){
+        $all_features=App::get("database")->selectAllFeatures();   
+
+         if (!isset($_SESSION['role']) || $_SESSION['role'] != 'admin') {
+            view("noaccess");
+             }
+        else{
+              view("features_crud",["all_features"=>$all_features]);    
+         }
+
+    }
+    public function create_feature(){
+        App::get('database')->insert([
+            'name'=>request("name")
+        ],"features");
+        $all_features=App::get("database")->selectAllFeatures(); 
+         view("features_crud",["all_features"=>$all_features]); 
+    }
+     public function roles_crud(){
+         $all_roles=App::get("database")->selectAllRoles();   
+
+         if (!isset($_SESSION['role']) || $_SESSION['role'] != 'admin') {
+            view("noaccess");
+             }
+        else{
+             view("roles_crud",["all_roles"=>$all_roles]);    
+         }
+
+    }
+    public function create_role(){
+        App::get('database')->insert([
+            'name'=>request("name")
+        ],"roles");
+        $all_roles=App::get("database")->selectAllRoles(); 
+         view("roles_crud",["all_roles"=>$all_roles]); 
+    }
+    public function create_user(){
         
         App::get("database")->insert([
     // 'uname' => $_POST['name']

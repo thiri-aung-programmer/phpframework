@@ -2,11 +2,11 @@
 <div>
 
    
-    <h2 class="text-success bg-secondary-subtle p-3 text-center fw-bold">All Of The Features</h2>
+    <h2 class="text-success bg-secondary-subtle p-3 text-center fw-bold">All Of The Roles</h2>
     <table class="table table-striped table-light w-50 m-auto text-center">
         <tr>
-            <th>FeatureID</th>
-            <th>FeatureName</th>
+            <th>RoleID</th>
+            <th>RoleName</th>
            
             <th>Permission</th>
         </tr>
@@ -17,11 +17,11 @@
         //    print_r(implode("",$_SESSION['feature']) . "\n");
          ?>
          </prep>
-        <?php foreach ($all_features as $feature): ?>
+        <?php foreach ($all_roles as $role): ?>
         <tr>
            
-            <th><?= $feature['id']; ?></th>
-            <th><?= $feature['name']; ?></th>
+            <th><?= $role['id']; ?></th>
+            <th><?= $role['name']; ?></th>
             
             <th>
                 <a href="" class="btn btn-warning p-1"><i class="bi bi-pencil-square"></i></a>
@@ -34,8 +34,8 @@
 
 
      <div class="w-75 m-auto">
-        <h2 class="text-success bg-secondary-subtle p-3 text-center fw-bold mt-3">Insert New Feature</h2>
-            <form class="w-100 p-3 bg-light shadow-sm" action="features_crud" method="post">
+        <h2 class="text-success bg-secondary-subtle p-3 text-center fw-bold mt-3">Insert New Role</h2>
+            <form class="w-100 p-3 bg-light shadow-sm" action="roles_crud" method="post">
 
                  <div class="row m-3">
                     <div class="col-md-4  col-10">

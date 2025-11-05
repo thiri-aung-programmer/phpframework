@@ -16,15 +16,16 @@
       <ul class="navbar-nav ms-auto">
 
         
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="menu1" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Management
+        <li class="nav-item nav-link">
+          <a class="dropdown-item" href="user_crud"> User Management</a>
+          <!-- <a class="nav-link dropdown-toggle" href="#" id="menu1" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            User Management
           </a>
           <ul class="dropdown-menu" aria-labelledby="menu1">
-            <li><a class="dropdown-item" href="user_crud">AllUsers</a></li>
-            <li><a class="dropdown-item" href="admincrud">Insert Update Delete</a></li>
+            <li></li>
+             <li><a class="dropdown-item" href="admincrud">Insert Update Delete</a></li> 
            
-          </ul>
+          </ul> -->
         </li>
 
        
@@ -36,6 +37,7 @@
             <li><a class="dropdown-item" href="user_permissions">Users and Their Roles By Permission</a></li>
             <li><a class="dropdown-item" href="features_crud">Features</a></li>
             <li><a class="dropdown-item" href="permissions_crud">permissions</a></li>
+            <li><a class="dropdown-item" href="roles_crud">Roles</a></li>
           </ul>
         </li>
 
