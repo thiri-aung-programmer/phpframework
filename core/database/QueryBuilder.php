@@ -77,7 +77,7 @@ class QueryBuilder{
         return $statement->fetchAll(PDO::FETCH_NAMED);
     }
     public function selectAllPermissions(){
-         $statement=$this->pdo->prepare("SELECT p.id AS ID,roles.name AS Role, f.name AS Feature, p.name AS Permission
+         $statement=$this->pdo->prepare("SELECT rp.id AS ID,roles.name AS Role, f.name AS Feature, p.name AS Permission
                                         FROM permissions p JOIN features f ON p.feature_id = f.id
                                         JOIN role_permissions rp ON rp.permissions_id = p.id 
                                         JOIN roles ON rp.role_id = roles.id ORDER BY roles.name,p.name; 
