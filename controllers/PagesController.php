@@ -91,10 +91,13 @@ class PagesController{
                 $_SESSION['permission'][$num++]=$p["name"][0];
                 $_SESSION['feature'][$num1++]=$p["name"][1];
               }
-              print_r($_SESSION['permission']);
-              echo "<br>";
-               print_r($_SESSION['feature']);
-              die();
+
+            //   echo "Permission Array In Session<prep>";
+            //   print_r($_SESSION['permission']);
+            //   echo "<br>";
+            //    echo "Feature Array In Session<prep>";
+            //    print_r($_SESSION['feature']);
+            //   die();
              $_SESSION['email']=$email;
              $_SESSION['id']=$id;
              $_SESSION['role']=$rolename;

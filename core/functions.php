@@ -33,11 +33,37 @@ function request($name){
 
 //in_array("user",$_SESSION["feature"],true) && in_array("crud",$_SESSION["permission"],true)
 function isPermission($feature,$permission){
-    return (in_array($feature,$_SESSION["feature"],true) && in_array($permission,$_SESSION["permission"],true))&&(array_search($feature,$_SESSION["feature"])==array_search($permission,$_SESSION["permission"]));
+    // return (in_array($feature,$_SESSION["feature"],true) 
+    // && in_array($permission,$_SESSION["permission"],true))&&
+    // (array_search($feature,$_SESSION["feature"])==array_search($permission,$_SESSION["permission"]));
+        //  $room_no=array_search($feature,$_SESSION["feature"]);
+        // echo $room_no;
+        // echo "<br>";
+        // echo $_SESSION["permission"][$room_no];
+        // echo "<br>";
+        // echo $permission;
+        // echo "<br>";
+        // echo "in_array_feature : ".in_array($feature,$_SESSION["feature"],true);
+        // echo "<br>";
+        // echo "in_array_permission : ".in_array($permission,$_SESSION["permission"],true);
+
+
+        // die();
+    if(in_array($feature,$_SESSION["feature"],true) 
+    && in_array($permission,$_SESSION["permission"],true))
+    {
+     $room_no=array_search($feature,$_SESSION["feature"]);
+    // echo $roomno;
+    // die();
+    return $permission==$_SESSION["permission"][$room_no];
+    }
+    //  return (in_array($feature,$_SESSION["feature"],true) 
+    // && in_array($permission,$_SESSION["permission"],true))&&
+    // (array_search($feature,$_SESSION["feature"])==array_search($permission,$_SESSION["permission"]));
 }
 // function fetchTasks($pdo){
 //        ဒါမှန်ပြီးသား ရေးပုံကအသေဖြစ်နေလို့ class ခွဲရေးလိုက်တာ
-//     $statement=$pdo->prepare("select * from tasks");
+//     $statement=$pdo->prepare("select * from tasks"); 
 //     $statement->execute();
 //     return  $statement->fetchAll(PDO::FETCH_OBJ);
 // }
