@@ -45,3 +45,7 @@ $router->get("permissions_crud",[PagesController::class,"permissions_crud"]);
 $router->post("permissions_crud",[PagesController::class,"create_permission"]);
 $router->get("roles_crud",[PagesController::class,"roles_crud"]);
 $router->post("roles_crud",[PagesController::class,"create_role"]);
+
+$router->get("stock_crud",[PagesController::class,"stock_crud"]);
+$router->get("stock_read",[PagesController::class,"stock_read"]);
+$router->get("stock_readupdate",[PagesController::class,"stock_readupdate"]);

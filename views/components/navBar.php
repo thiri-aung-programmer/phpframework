@@ -41,6 +41,17 @@
         </li>
 
         <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="menu2" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Stock Management
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="menu2">
+            <li><a class="dropdown-item" href="stock_read">All Stock(ReadOnly)</a></li>
+            <li><a class="dropdown-item" href="stock_crud">All Stock(CRUD)</a></li>
+            <li><a class="dropdown-item" href="stock_readupdate">All Stock(Read_Update)</a></li>            
+          </ul>
+        </li>
+
+        <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle bg-success text-light rounded rounded-4" href="#" id="menu2" role="button" data-bs-toggle="dropdown" aria-expanded="false">
            <i class="bi bi-person-circle"></i>
           <?php  if(isset($_SESSION["email"])) : ?>
