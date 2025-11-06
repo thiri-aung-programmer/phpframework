@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3308
--- Generation Time: Oct 29, 2025 at 04:36 PM
+-- Generation Time: Nov 06, 2025 at 03:07 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -46,7 +46,8 @@ CREATE TABLE `admin_users` (
 
 INSERT INTO `admin_users` (`id`, `name`, `username`, `role_id`, `phone`, `email`, `address`, `pswd`, `gender`, `is_active`) VALUES
 (1, 'Mg Mg ', 'Mg Mg', 1, '09123456', 'mgmg@gmail.com', 'Mdy', 'ce0079d945edc39054c0672172b79522', 0, 1),
-(2, 'AungAung', 'AungAung', 2, '09123456', 'aungaung@gmail.com', 'Taungyi', '7f987f9b4e406e2e0a254e45598e52bf', 0, 0);
+(2, 'AungAung', 'AungAung', 2, '09123456', 'aungaung@gmail.com', 'Taungyi', '7f987f9b4e406e2e0a254e45598e52bf', 0, 0),
+(8, 'Ko Ko', 'Ko Ko', 3, '091245638', 'koko@gmail.com', 'Mdy', '748506ac7ea3251053cd61e909f05f96', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -66,7 +67,10 @@ CREATE TABLE `features` (
 INSERT INTO `features` (`id`, `name`) VALUES
 (1, 'user'),
 (2, 'report'),
-(3, 'stock');
+(3, 'stock'),
+(4, 'permissions'),
+(5, 'features'),
+(6, 'roles');
 
 -- --------------------------------------------------------
 
@@ -91,7 +95,12 @@ INSERT INTO `permissions` (`id`, `name`, `feature_id`) VALUES
 (4, 'read', 1),
 (5, 'read', 2),
 (6, 'read', 3),
-(7, 'readupdate', 3);
+(7, 'readupdate', 3),
+(10, 'newpermission', 2),
+(11, 'crud', 4),
+(12, 'crud', 5),
+(13, 'crud', 6),
+(14, 'read', 4);
 
 -- --------------------------------------------------------
 
@@ -111,7 +120,8 @@ CREATE TABLE `roles` (
 INSERT INTO `roles` (`id`, `name`) VALUES
 (1, 'admin'),
 (2, 'chef'),
-(3, 'waiter');
+(3, 'waiter'),
+(4, 'chef_assistant');
 
 -- --------------------------------------------------------
 
@@ -138,7 +148,13 @@ INSERT INTO `role_permissions` (`id`, `role_id`, `permissions_id`) VALUES
 (6, 2, 7),
 (7, 3, 4),
 (8, 3, 5),
-(9, 3, 6);
+(9, 3, 6),
+(10, 1, 10),
+(11, 1, 11),
+(12, 1, 12),
+(13, 1, 13),
+(14, 2, 14),
+(15, 3, 14);
 
 --
 -- Indexes for dumped tables
@@ -175,8 +191,8 @@ ALTER TABLE `roles`
 --
 ALTER TABLE `role_permissions`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `role_id` (`role_id`),
-  ADD KEY `permissions_id` (`permissions_id`);
+  ADD KEY `permissions_id` (`permissions_id`),
+  ADD KEY `role_id` (`role_id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -186,19 +202,31 @@ ALTER TABLE `role_permissions`
 -- AUTO_INCREMENT for table `admin_users`
 --
 ALTER TABLE `admin_users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT for table `features`
+--
+ALTER TABLE `features`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `permissions`
 --
 ALTER TABLE `permissions`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+
+--
+-- AUTO_INCREMENT for table `roles`
+--
+ALTER TABLE `roles`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `role_permissions`
 --
 ALTER TABLE `role_permissions`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- Constraints for dumped tables
@@ -220,8 +248,8 @@ ALTER TABLE `permissions`
 -- Constraints for table `role_permissions`
 --
 ALTER TABLE `role_permissions`
-  ADD CONSTRAINT `role_permissions_ibfk_1` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`),
-  ADD CONSTRAINT `role_permissions_ibfk_2` FOREIGN KEY (`permissions_id`) REFERENCES `permissions` (`id`);
+  ADD CONSTRAINT `role_permissions_ibfk_2` FOREIGN KEY (`permissions_id`) REFERENCES `permissions` (`id`),
+  ADD CONSTRAINT `role_permissions_ibfk_3` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
