@@ -1,4 +1,4 @@
-<?php require 'views/partials/adminheader.php'; ?>
+<?php require 'views/partials/header.php'; ?>
 <div>
 
    

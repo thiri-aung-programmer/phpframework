@@ -1,4 +1,4 @@
-<?php require 'views/partials/adminheader.php'; ?>
+<?php require 'views/partials/header.php'; ?>
 <div>
     <h2 class="text-success bg-secondary-subtle p-3 text-center fw-bold">Permissions By Roles</h2>
     <table class="table table-striped table-light w-75 m-auto text-center">

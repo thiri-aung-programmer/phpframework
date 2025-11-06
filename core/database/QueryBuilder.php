@@ -14,7 +14,7 @@ class QueryBuilder{
         // die();
         $getDataValues=array_values($dataArr);
         $getDataValues[1]=MD5( $getDataValues[1]);
-        $statement=$this->pdo->prepare("SELECT role_id as roleid FROM $table WHERE email = ? AND pswd = ? AND role_id = ?");
+        $statement=$this->pdo->prepare("SELECT role_id as roleid FROM $table WHERE email = ? AND pswd = ?");
         $statement->execute($getDataValues);
 
         $row = $statement->fetch(PDO::FETCH_ASSOC);

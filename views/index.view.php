@@ -9,12 +9,12 @@
                     <input type="text" name="email" id="" class="form-control mb-2" placeholder="abc@gmail.com" require>
                     <input type="password" name="password" id="" class="form-control mb-2" placeholder="*******" require>
 
-                    <select name="role" class="form-control mb-2">
+                    <!-- <select name="role" class="form-control mb-2">
                         <option  selected hidden disabled>Choose Your Role</option>
-                        <?php foreach ($roles as $role): ?>
-                             <option value="<?= $role->id; ?>"><?= htmlspecialchars($role->name); ?></option>
-                        <?php endforeach; ?>
-                    </select>
+                        <?php //foreach ($roles as $role): ?>
+                             <option value="<? //= $role->id; ?>"><?//= htmlspecialchars($role->name); ?></option>
+                        <?php //endforeach; ?>
+                    </select> -->
 
                     <input type="submit" value="Login" class="btn btn-danger">
                 </div>

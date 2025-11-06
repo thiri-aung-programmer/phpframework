@@ -36,7 +36,7 @@ $router->get('admincrud',[PagesController::class,"crud"]);
 $router->get('logout',[PagesController::class,"logout"]);
 
 $router->get('user_read',[PagesController::class,"user_read"]);
-$router->get('user_permissions',[PagesController::class,"user_permissions"]);
+$router->get('permissions_read',[PagesController::class,"permissions_read"]);
 $router->get('user_crud',[PagesController::class,"user_crud"]);
 $router->post('user_crud',[PagesController::class,"create_user"]);
 $router->get('features_crud',[PagesController::class,"features_crud"]);
