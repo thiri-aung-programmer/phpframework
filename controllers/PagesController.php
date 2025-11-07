@@ -41,7 +41,7 @@ class PagesController{
     }
     public function user_read(){
 
-        $allInfos=App::get("database")->selectAllInfo("admin_users","roles");      
+        $all_Infos=App::get("database")->selectAllInfo("admin_users","roles");      
         
 
          if (!isset($_SESSION['role']) ) {
@@ -49,7 +49,7 @@ class PagesController{
         }
         else{
             if(isPermission("user","read")){
-                view("user_read",["allinfos"=>$allinfos]);
+                view("user_read",["allinfos"=>$all_Infos]);
             }
             else{
                 view("noaccess");
@@ -66,7 +66,7 @@ class PagesController{
         // $roleid=request('role');        
         $id=App::get("database")->userChecker([
         'email' => request("email"),
-        'password' => request("password"),
+        'password' => request("password")
         // 'roleid' => request("role")
     ],"admin_users");  
         // echo $id;
@@ -78,7 +78,11 @@ class PagesController{
         }  
         else{
              $rolename=App::get("database")->selectRole($id);
-              $permissions=App::get("database")->selectPermissions($id);
+             $userID=App::get("database")->selectUserId([
+                 'email' => request("email"),
+                'password' => request("password")        
+                ],"admin_users");
+              $permissions=App::get("database")->selectPermissions($userID);
               $num=0;$num1=0;
             //    var_dump($permissions);
             //    die();
@@ -92,15 +96,20 @@ class PagesController{
                 $_SESSION['feature'][$num1++]=$p["name"][1];
               }
 
-            //   echo "Permission Array In Session<prep>";
+            
+             $_SESSION['email']=$email;
+             $_SESSION['id']=$userID;
+             $_SESSION['role']=$rolename;
+
+
+            //    echo "Permission Array In Session<prep>";
             //   print_r($_SESSION['permission']);
             //   echo "<br>";
             //    echo "Feature Array In Session<prep>";
             //    print_r($_SESSION['feature']);
+            //      print_r($_SESSION['role']);
+            //      echo "id = ".$userID;
             //   die();
-             $_SESSION['email']=$email;
-             $_SESSION['id']=$id;
-             $_SESSION['role']=$rolename;
             //  redirect($rolename);
              
                 view("all");

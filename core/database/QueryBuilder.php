@@ -30,6 +30,30 @@ class QueryBuilder{
         //  return  $statement->fetchAll(PDO::FETCH_OBJ);
         // return $statement->fetch();
     }
+    public function selectUserId($dataArr,$table)
+    {
+        //SELECT EXISTS( SELECT 1 FROM `admin_users` WHERE email = "mgmg123@gmail.com" AND pswd = MD5("mgmg123") AND role_id = 1 ) AS user_exists; 
+        // print_r($table);
+        // print_r($roleid);
+        // die();
+        $getDataValues=array_values($dataArr);
+        $getDataValues[1]=MD5( $getDataValues[1]);
+        $statement=$this->pdo->prepare("SELECT id as userid FROM $table WHERE email = ? AND pswd = ?");
+        $statement->execute($getDataValues);
+
+        $row = $statement->fetch(PDO::FETCH_ASSOC);
+        // echo $row['role_id'];  
+
+        if($row){
+             return  $row['userid'];
+        }
+        else{
+            return "";
+        }
+        // $statement->execute();
+        //  return  $statement->fetchAll(PDO::FETCH_OBJ);
+        // return $statement->fetch();
+    }
     public function selectRole($id){
         $statement=$this->pdo->prepare("select name from roles where id=$id");
         $statement->execute();
