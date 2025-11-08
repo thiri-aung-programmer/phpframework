@@ -1,4 +1,10 @@
-<?php require 'views/partials/header.php'; ?>
+<?php require 'views/partials/header.php'; 
+ use controllers\PagesController;
+    use controllers\PermissionsController;
+    use controllers\UserController;
+    use controllers\StockController;
+
+?>
 <div>
 
    

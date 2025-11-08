@@ -1,5 +1,8 @@
     <?php require 'partials/chefheader.php';
     use controllers\PagesController;
+    use controllers\PermissionsController;
+    use controllers\UserController;
+    use controllers\StockController;
     
     ?>
    

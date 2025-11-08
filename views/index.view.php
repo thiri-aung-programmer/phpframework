@@ -1,4 +1,9 @@
-<?php require 'partials/welcomeheader.php'; ?>
+<?php require 'partials/welcomeheader.php'; 
+    use controllers\PagesController;
+    use controllers\PermissionsController;
+    use controllers\UserController;
+    use controllers\StockController;
+?>
    
            
             

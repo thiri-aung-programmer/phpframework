@@ -16,49 +16,8 @@ class PagesController{
                        
     }
    
-     public function user_crud(){
-        
-
-         if (!isset($_SESSION['role'])) {
-                 view("noaccess");
-             }
-        else{
-            // echo array_search("crud",$_SESSION["permission"]);
-            // die();
-             if(isPermission("user","crud"))
-            {
-                 $allUsers=App::get("database")->selectAllInfo("admin_users","roles");  
-                 $roles=App::get("database")->selectAll("roles");  
-             view("user_crud",["allinfos"=>$allUsers,"roles"=>$roles]); 
-            }   
-            else{
-                 view("noaccess");
-            }
-         }                                        
-        
-         // view("admin/user");  
-        // view("admin/user",["allinfos"=>App::get("database")->selectAllInfo("admin_users","roles")]);                                        
-    }
-    public function user_read(){
-
-        $all_Infos=App::get("database")->selectAllInfo("admin_users","roles");      
-        
-
-         if (!isset($_SESSION['role']) ) {
-                view("noaccess");
-        }
-        else{
-            if(isPermission("user","read")){
-                view("user_read",["allinfos"=>$all_Infos]);
-            }
-            else{
-                view("noaccess");
-            }
-               
-            
-                                              
-            }
-    }
+     
+    
     public function check(){                       
         $table="admin_users";     
         $email=request('email');
@@ -117,226 +76,19 @@ class PagesController{
         }                               
       
     }
-    
-
-    public function permissions_read(){
-        
-        $all_infos=App::get("database")->selectAllUsersByPermissions();   
-         
-
-         if (!isset($_SESSION['role'])) {
-            view("noaccess");
-             }
-        else{
-            if(isPermission("permissions","read"))
-            {
-                view("permissions_read",["allinfos"=>$all_infos]);    
-            }
-            else{
-                view("noaccess");
-            }
-             
-         }
-
-
-                              
-    }
-    
-   
-    
-    
-   
-
-    public function permissions_crud(){
-         $all_permissions=App::get("database")->selectAllPermissions();    
-          $roles=App::get("database")->selectAll("roles");
-           $features=App::get("database")->selectAll("features");
-
-         if (!isset($_SESSION['role']) ){
-            view("noaccess");
-             }
-        else{
-             if(isPermission("permissions","crud")){
-                view("permissions_crud",["allpermissions"=>$all_permissions,
-                                        "roles"=>$roles,
-                                        "features"=>$features
-                                        ]);    
-             }
-             else{
-                view("noaccess");
-             }
-             
-         }
-
-    }
-   
-     public function features_crud(){
-        $all_features=App::get("database")->selectAllFeatures();   
-
-         if (!isset($_SESSION['role'])) {
-            view("noaccess");
-             }
-        else{
-             if(isPermission("features","crud")){
-                 view("features_crud",["all_features"=>$all_features]);
-             }
-             else{
-                view("noaccess");
-             }
-                 
-         }
-
-    }
-    
-
-     public function roles_crud(){
-         $all_roles=App::get("database")->selectAllRoles();   
-
-         if (!isset($_SESSION['role'])) {
-            view("noaccess");
-             }
-        else{
-
-            if(isPermission("roles","crud")){
-                 view("roles_crud",["all_roles"=>$all_roles]);
-            }
-            else{
-                view("noaccess");
-            }
-
-                
-         }
-
-    }
-     public function stock_crud(){
-         
-
-         if (!isset($_SESSION['role'])) {
-            view("noaccess");
-             }
-        else{
-
-            if(isPermission("stock","crud")){
-                 view("stock_crud");
-            }
-            else{
-                view("noaccess");
-            }                
-         }
-    }
-     public function stock_read(){
-         
-
-         if (!isset($_SESSION['role'])) {
-            view("noaccess");
-             }
-        else{
-
-            if(isPermission("stock","read")){
-                 view("stock_read");
-            }
-            else{
-                view("noaccess");
-            }                
-         }
-    }
-     public function stock_readupdate(){
-         
-
-         if (!isset($_SESSION['role'])) {
-            view("noaccess");
-             }
-        else{
-
-            if(isPermission("stock","readupdate")){
-                 view("stock_readupdate");
-            }
-            else{
-                view("noaccess");
-            }                
-         }
-    }
-
-    public function create_feature(){
-        App::get('database')->insert([
-            'name'=>request("name")
-        ],"features");
-        $all_features=App::get("database")->selectAllFeatures(); 
-         view("features_crud",["all_features"=>$all_features]); 
-    }
-
-    public function create_role(){
-        App::get('database')->insert([
-            'name'=>request("name")
-        ],"roles");
-        $all_roles=App::get("database")->selectAllRoles(); 
-         view("roles_crud",["all_roles"=>$all_roles]); 
-    }
-     public function create_permission(){
-        $permission_id=App::get('database')->insertReturnID([
-            'name'=>request("name"),
-            "feature_id"=>request("feature_id")
-        ],"permissions");
        
-        App::get('database')->insert([
-            'role_id'=>request("role_id"),
-            'permissions_id'=>$permission_id
-        ],"role_permissions");
-
-         $all_permissions=App::get("database")->selectAllPermissions();    
-          $roles=App::get("database")->selectAll("roles");
-           $features=App::get("database")->selectAll("features");
-
-        view("permissions_crud",["allpermissions"=>$all_permissions,
-                                        "roles"=>$roles,
-                                        "features"=>$features
-                                        ]);    
-
-    }
-    public function create_user(){
-        
-        App::get("database")->insert([
-    // 'uname' => $_POST['name']
-    //admin_users(name,username,role_id,phone,email,address,pswd,gender,is_active)
-    'name' => request("name"),
-    'username'=>request("username"),
-    'role_id'=>request("role_id"),
-    'phone'=>request("phone"),
-    'email'=>request("email"),
-    'address'=>request("address"),
-    'pswd'=>md5(request("pswd")),
-    'gender'=>request("gender"),
-    'is_active'=>request("is_active")
-    ],"admin_users");
- 
-                 $allUsers=App::get("database")->selectAllInfo("admin_users","roles");  
-                 $roles=App::get("database")->selectAll("roles");  
-        view("user_crud",["allinfos"=>$allUsers,"roles"=>$roles]); 
-    }
-
-    
-    public function waiter(){
-        if (!isset($_SESSION['role']) || $_SESSION['role'] != 'waiter') {
+     public function noaccess(){
         view("noaccess");
     }
-    else{
-        view("waiter");     
-    }
-                                 
-    }
+   
+
+    
+    
     public function logout(){
         session_unset();
        redirect("/");
     }
-    public function chef(){
-         if (!isset($_SESSION['role']) || $_SESSION['role'] != 'chef') {
-        view("noaccess");
-        }
-        else{
-        view("chef");    
-    }
-                                 
-    }
+    
     public function crud(){
         view("crud");
     }
@@ -347,16 +99,5 @@ class PagesController{
     public function contact(){
         view("contact");
     }
-    public function admin(){
-        
-        if (!isset($_SESSION['role']) || $_SESSION['role'] != 'admin') {
-        view("noaccess");
-    }
-    else{
-        view("admin");     
-    }
-
-
-                              
-    }
+    
 } 

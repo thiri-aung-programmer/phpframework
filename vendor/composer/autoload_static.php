@@ -17,6 +17,8 @@ class ComposerStaticInitd751713988987e9331980363e24189ce
         'Request' => __DIR__ . '/../..' . '/core/Request.php',
         'Router' => __DIR__ . '/../..' . '/core/Router.php',
         'controllers\\PagesController' => __DIR__ . '/../..' . '/controllers/PagesController.php',
+        'controllers\\PermissionsController' => __DIR__ . '/../..' . '/controllers/PermissionsController.php',
+        'controllers\\StockController' => __DIR__ . '/../..' . '/controllers/StockController.php',
         'controllers\\UserController' => __DIR__ . '/../..' . '/controllers/UserController.php',
         'core\\App' => __DIR__ . '/../..' . '/core/App.php',
     );

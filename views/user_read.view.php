@@ -1,4 +1,10 @@
-<?php require 'views/partials/header.php'; ?>
+<?php require 'views/partials/header.php'; 
+    use controllers\PagesController;
+    use controllers\PermissionsController;
+    use controllers\UserController;
+    use controllers\StockController;
+
+?>
 <div>
     <h2 class="text-success bg-secondary-subtle p-3 text-center fw-bold">All Of The Users Using Our Website</h2>
     <table class="table table-striped table-light">

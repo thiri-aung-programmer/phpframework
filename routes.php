@@ -1,51 +1,37 @@
 <?php
 
+    use controllers\PagesController;
+    use controllers\PermissionsController;
+    use controllers\UserController;
+    use controllers\StockController;
 
-//www.localhost:8000 ဒါက default route
-    
-// $routes=[
-// ];
-// $router->register([
-//     ""=>"controllers/IndexController.php",
-//     "about"=>"controllers/AboutController.php",
-//     "contactus"=>"controllers/ContactController.php",
-//     "names"=>"controllers/add-name.php"
-
-// ]);
-// ဒါက Laravel 7 ရဲ့ route system 
-// $router->get("","PagesController@home");
-// $router->get("about","PagesController@about");
-// $router->get("contactus","PagesController@contact");
-// $router->post("names","PagesController@createUser");
-// $router->get("users","UserController@index");
-
-// ဒါက အခုနောက်ဆုံး Laravel 8 ရဲ့ ပုံစံ
-use controllers\PagesController;
-use controllers\UsersController;
+$router->post('check',[PagesController::class,"check"]); 
 $router->get('',[PagesController::class,"home"]);
+$router->get('logout',[PagesController::class,"logout"]);
+$router->get('admincrud',[PagesController::class,"crud"]);
 $router->get('about',[PagesController::class,"about"]);
 $router->get('contactus',[PagesController::class,"contact"]);
-
-// $router->get('users',[UserController::class,"index"]);
-$router->get('admin',[PagesController::class,"admin"]);
 $router->get('noaccess',[PagesController::class,"noaccess"]);
-$router->get('chef',[PagesController::class,"chef"]);
-$router->get('waiter',[PagesController::class,"waiter"]);
-$router->post('check',[PagesController::class,"check"]); 
-$router->get('admincrud',[PagesController::class,"crud"]);
-$router->get('logout',[PagesController::class,"logout"]);
 
-$router->get('user_read',[PagesController::class,"user_read"]);
-$router->get('permissions_read',[PagesController::class,"permissions_read"]);
-$router->get('user_crud',[PagesController::class,"user_crud"]);
-$router->post('user_crud',[PagesController::class,"create_user"]);
-$router->get('features_crud',[PagesController::class,"features_crud"]);
-$router->post('features_crud',[PagesController::class,"create_feature"]);
-$router->get("permissions_crud",[PagesController::class,"permissions_crud"]);
-$router->post("permissions_crud",[PagesController::class,"create_permission"]);
-$router->get("roles_crud",[PagesController::class,"roles_crud"]);
-$router->post("roles_crud",[PagesController::class,"create_role"]);
 
-$router->get("stock_crud",[PagesController::class,"stock_crud"]);
-$router->get("stock_read",[PagesController::class,"stock_read"]);
-$router->get("stock_readupdate",[PagesController::class,"stock_readupdate"]);
+
+
+$router->get('admin',[UserController::class,"admin"]);
+$router->get('chef',[UserController::class,"chef"]);
+$router->get('waiter',[UserController::class,"waiter"]);
+$router->get('user_read',[UserController::class,"user_read"]);
+$router->get('user_crud',[UserController::class,"user_crud"]);
+$router->post('user_crud',[UserController::class,"create_user"]);
+// $router->get('users',[UserController::class,"index"]);
+
+$router->get('features_crud',[PermissionsController::class,"features_crud"]);
+$router->post('features_crud',[PermissionsController::class,"create_feature"]);
+$router->get("permissions_crud",[PermissionsController::class,"permissions_crud"]);
+$router->post("permissions_crud",[PermissionsController::class,"create_permission"]);
+$router->get("roles_crud",[PermissionsController::class,"roles_crud"]);
+$router->post("roles_crud",[PermissionsController::class,"create_role"]);
+$router->get('permissions_read',[PermissionsController::class,"permissions_read"]);
+
+$router->get("stock_crud",[StockController::class,"stock_crud"]);
+$router->get("stock_read",[StockController::class,"stock_read"]);
+$router->get("stock_readupdate",[StockController::class,"stock_readupdate"]);
