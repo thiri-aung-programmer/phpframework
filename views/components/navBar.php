@@ -23,8 +23,14 @@
             User Management
           </a>
           <ul class="dropdown-menu" aria-labelledby="menu2">
-            <li><a class="dropdown-item" href="user_read">All Users(ReadOnly)</a></li>            
-            <li><a class="dropdown-item" href="user_crud">All Users</a></li>
+           <?php if(isPermission("user","read")):?> 
+            <li><a class="dropdown-item" href="user_read">All Users(ReadOnly)</a></li>    
+            <?php endif;?> 
+            
+              <?php if(isPermission("user","curd")):?> 
+                  <li><a class="dropdown-item" href="user_crud">All Users</a></li>
+              <?php endif;?>  
+            
           </ul>
         </li>
        
@@ -33,10 +39,18 @@
             Permission Management
           </a>
           <ul class="dropdown-menu" aria-labelledby="menu2">
-            <li><a class="dropdown-item" href="permissions_read">Users and Their Roles By Permission</a></li>
-            <li><a class="dropdown-item" href="features_crud">Features</a></li>
-            <li><a class="dropdown-item" href="permissions_crud">permissions</a></li>
-            <li><a class="dropdown-item" href="roles_crud">Roles</a></li>
+             <?php if(isPermission("permissions","read")):?>
+                    <li><a class="dropdown-item" href="permissions_read">Users and Their Roles By Permission</a></li>
+             <?php endif;?> 
+             <?php if(isPermission("features","curd")):?>
+                    <li><a class="dropdown-item" href="features_crud">Features</a></li>
+             <?php endif;?> 
+             <?php if(isPermission("permissions","curd")):?>
+                   <li><a class="dropdown-item" href="permissions_crud">permissions</a></li>
+             <?php endif;?> 
+             <?php if(isPermission("roles","curd")):?>
+                  <li><a class="dropdown-item" href="roles_crud">Roles</a></li>
+             <?php endif;?> 
           </ul>
         </li>
 
@@ -45,9 +59,19 @@
             Stock Management
           </a>
           <ul class="dropdown-menu" aria-labelledby="menu2">
-            <li><a class="dropdown-item" href="stock_read">All Stock(ReadOnly)</a></li>
-            <li><a class="dropdown-item" href="stock_crud">All Stock(CRUD)</a></li>
-            <li><a class="dropdown-item" href="stock_readupdate">All Stock(Read_Update)</a></li>            
+            <?php if(isPermission("stock","read")):?> 
+                  <li><a class="dropdown-item" href="stock_read">All Stock(ReadOnly)</a></li>
+            <?php endif;?> 
+            <?php if(isPermission("stock","curd")):?> 
+                  <li><a class="dropdown-item" href="stock_crud">All Stock(CRUD)</a></li>
+            <?php endif;?> 
+            <?php if(isPermission("stock","readupdate")):?>
+                  <li><a class="dropdown-item" href="stock_readupdate">All Stock(Read_Update)</a></li>
+            <?php endif;?> 
+             
+            
+            
+                        
           </ul>
         </li>
 
