@@ -26,13 +26,13 @@
             
            
             <li>
-              <?php if(isPermission("user","crud")): ?>
+              <?php if(isPermission("user","read")): ?>
               <a class="dropdown-item" href="user_read">All Users(ReadOnly)</a>
               <?php endif; ?> 
             </li>    
             
             <li>
-              <?php if(isPermission("user","curd")): ?>                 
+              <?php if(isPermission("user","crud")): ?>                 
                   <a class="dropdown-item" href="user_crud">All Users</a>
               <?php endif;?>  
             </li>
@@ -50,17 +50,17 @@
                 <?php endif;?> 
             </li>
              <li>
-                  <?php if(isPermission("features","curd")):?>
+                  <?php if(isPermission("features","crud")):?>
                     <a class="dropdown-item" href="features_crud">Features</a>
                   <?php endif;?> 
              </li>
               <li>
-                    <?php if(isPermission("permissions","curd")):?>
+                    <?php if(isPermission("permissions","crud")):?>
                    <a class="dropdown-item" href="permissions_crud">permissions</a>
                     <?php endif;?> 
               </li>
                <li>
-                      <?php if(isPermission("roles","curd")):?>
+                      <?php if(isPermission("roles","crud")):?>
                       <li><a class="dropdown-item" href="roles_crud">Roles</a></li>
                       <?php endif;?> 
                </li>
@@ -78,7 +78,7 @@
                 <?php endif;?> 
             </li>
             <li>
-                  <?php if(isPermission("stock","curd")):?> 
+                  <?php if(isPermission("stock","crud")):?> 
                   <a class="dropdown-item" href="stock_crud">All Stock(CRUD)</a>
             <?php endif;?> 
             </li>
@@ -106,7 +106,7 @@
         </li>
 
         <li class="nav-item text-dark mx-2 px-2 py-1 bg-danger-subtle rounded rounded-3">
-          <a class="dropdown-item" href="user_crud"> 
+          <a class="dropdown-item" href="#"> 
                  <?php  if(isset($_SESSION["role"])) : ?>
                     <?= $_SESSION["role"]; ?>
                     <?php endif ; ?>
