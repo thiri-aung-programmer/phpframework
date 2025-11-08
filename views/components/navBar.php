@@ -23,14 +23,19 @@
             User Management
           </a>
           <ul class="dropdown-menu" aria-labelledby="menu2">
-           <?php if(isPermission("user","read")):?> 
-            <li><a class="dropdown-item" href="user_read">All Users(ReadOnly)</a></li>    
-            <?php endif;?> 
             
-              <?php if(isPermission("user","curd")):?> 
-                  <li><a class="dropdown-item" href="user_crud">All Users</a></li>
+           
+            <li>
+              <?php if(isPermission("user","crud")): ?>
+              <a class="dropdown-item" href="user_read">All Users(ReadOnly)</a>
+              <?php endif; ?> 
+            </li>    
+            
+            <li>
+              <?php if(isPermission("user","curd")): ?>                 
+                  <a class="dropdown-item" href="user_crud">All Users</a>
               <?php endif;?>  
-            
+            </li>
           </ul>
         </li>
        
@@ -39,18 +44,26 @@
             Permission Management
           </a>
           <ul class="dropdown-menu" aria-labelledby="menu2">
-             <?php if(isPermission("permissions","read")):?>
-                    <li><a class="dropdown-item" href="permissions_read">Users and Their Roles By Permission</a></li>
-             <?php endif;?> 
-             <?php if(isPermission("features","curd")):?>
-                    <li><a class="dropdown-item" href="features_crud">Features</a></li>
-             <?php endif;?> 
-             <?php if(isPermission("permissions","curd")):?>
-                   <li><a class="dropdown-item" href="permissions_crud">permissions</a></li>
-             <?php endif;?> 
-             <?php if(isPermission("roles","curd")):?>
-                  <li><a class="dropdown-item" href="roles_crud">Roles</a></li>
-             <?php endif;?> 
+            <li>
+               <?php if(isPermission("permissions","read")):?>
+                    <a class="dropdown-item" href="permissions_read">Users and Their Roles By Permission</a>
+                <?php endif;?> 
+            </li>
+             <li>
+                  <?php if(isPermission("features","curd")):?>
+                    <a class="dropdown-item" href="features_crud">Features</a>
+                  <?php endif;?> 
+             </li>
+              <li>
+                    <?php if(isPermission("permissions","curd")):?>
+                   <a class="dropdown-item" href="permissions_crud">permissions</a>
+                    <?php endif;?> 
+              </li>
+               <li>
+                      <?php if(isPermission("roles","curd")):?>
+                      <li><a class="dropdown-item" href="roles_crud">Roles</a></li>
+                      <?php endif;?> 
+               </li>
           </ul>
         </li>
 
@@ -59,18 +72,21 @@
             Stock Management
           </a>
           <ul class="dropdown-menu" aria-labelledby="menu2">
-            <?php if(isPermission("stock","read")):?> 
-                  <li><a class="dropdown-item" href="stock_read">All Stock(ReadOnly)</a></li>
+            <li>
+                <?php if(isPermission("stock","read")):?> 
+                  <a class="dropdown-item" href="stock_read">All Stock(ReadOnly)</a>
+                <?php endif;?> 
+            </li>
+            <li>
+                  <?php if(isPermission("stock","curd")):?> 
+                  <a class="dropdown-item" href="stock_crud">All Stock(CRUD)</a>
             <?php endif;?> 
-            <?php if(isPermission("stock","curd")):?> 
-                  <li><a class="dropdown-item" href="stock_crud">All Stock(CRUD)</a></li>
-            <?php endif;?> 
-            <?php if(isPermission("stock","readupdate")):?>
-                  <li><a class="dropdown-item" href="stock_readupdate">All Stock(Read_Update)</a></li>
-            <?php endif;?> 
-             
-            
-            
+            </li>
+            <li>
+                    <?php if(isPermission("stock","readupdate")):?>
+                    <a class="dropdown-item" href="stock_readupdate">All Stock(Read_Update)</a>
+                    <?php endif;?> 
+            </li>
                         
           </ul>
         </li>
