@@ -15,7 +15,7 @@ class PermissionsController{
         else{
             if(isPermission("permissions","read"))
             {
-                view("permissions_read",["allinfos"=>$all_infos]);    
+                view("permissions/permissions_read",["allinfos"=>$all_infos]);    
             }
             else{
                 view("noaccess");
@@ -42,7 +42,7 @@ class PermissionsController{
              }
         else{
              if(isPermission("permissions","crud")){
-                view("permissions_crud",["allpermissions"=>$all_permissions,
+                view("permissions/permissions_crud",["allpermissions"=>$all_permissions,
                                         "roles"=>$roles,
                                         "features"=>$features
                                         ]);    
@@ -63,7 +63,7 @@ class PermissionsController{
              }
         else{
              if(isPermission("features","crud")){
-                 view("features_crud",["all_features"=>$all_features]);
+                 view("permissions/features_crud",["all_features"=>$all_features]);
              }
              else{
                 view("noaccess");
@@ -83,7 +83,7 @@ class PermissionsController{
         else{
 
             if(isPermission("roles","crud")){
-                 view("roles_crud",["all_roles"=>$all_roles]);
+                 view("permissions/roles_crud",["all_roles"=>$all_roles]);
             }
             else{
                 view("noaccess");
@@ -99,7 +99,7 @@ class PermissionsController{
             'name'=>request("name")
         ],"features");
         $all_features=App::get("database")->selectAllFeatures(); 
-         view("features_crud",["all_features"=>$all_features]); 
+         view("permissions/features_crud",["all_features"=>$all_features]); 
     }
 
     public function create_role(){
@@ -107,7 +107,7 @@ class PermissionsController{
             'name'=>request("name")
         ],"roles");
         $all_roles=App::get("database")->selectAllRoles(); 
-         view("roles_crud",["all_roles"=>$all_roles]); 
+         view("permissions/roles_crud",["all_roles"=>$all_roles]); 
     }
      public function create_permission(){
         $permission_id=App::get('database')->insertReturnID([
@@ -124,7 +124,7 @@ class PermissionsController{
           $roles=App::get("database")->selectAll("roles");
            $features=App::get("database")->selectAll("features");
 
-        view("permissions_crud",["allpermissions"=>$all_permissions,
+        view("permissions/permissions_crud",["allpermissions"=>$all_permissions,
                                         "roles"=>$roles,
                                         "features"=>$features
                                         ]);    

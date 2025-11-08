@@ -79,10 +79,7 @@ class PagesController{
        
      public function noaccess(){
         view("noaccess");
-    }
-   
-
-    
+    }    
     
     public function logout(){
         session_unset();

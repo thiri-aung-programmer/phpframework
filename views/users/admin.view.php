@@ -1,4 +1,4 @@
-    <?php require 'partials/adminheader.php';
+    <?php require 'views/partials/adminheader.php';
     use controllers\PagesController;
     use controllers\PermissionsController;
     use controllers\UserController;

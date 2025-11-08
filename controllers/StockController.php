@@ -16,7 +16,7 @@ class StockController{
         else{
 
             if(isPermission("stock","crud")){
-                 view("stock_crud");
+                 view("stocks/stock_crud");
             }
             else{
                 view("noaccess");
@@ -32,7 +32,7 @@ class StockController{
         else{
 
             if(isPermission("stock","read")){
-                 view("stock_read");
+                 view("stocks/stock_read");
             }
             else{
                 view("noaccess");
@@ -48,7 +48,7 @@ class StockController{
         else{
 
             if(isPermission("stock","readupdate")){
-                 view("stock_readupdate");
+                 view("stocks/stock_readupdate");
             }
             else{
                 view("noaccess");

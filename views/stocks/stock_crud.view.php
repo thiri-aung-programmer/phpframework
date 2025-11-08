@@ -1,10 +1,9 @@
-<?php require 'partials/header.php';
+<?php require 'views/partials/header.php';
     use controllers\PagesController;
     use controllers\PermissionsController;
     use controllers\UserController;
     use controllers\StockController;
     
-    
     ?>
    
-   <h1 class="text-center text-success">Stock_Read/Update Page</h1>
+   <h1 class="text-center text-success">Stock_Crud Page</h1>

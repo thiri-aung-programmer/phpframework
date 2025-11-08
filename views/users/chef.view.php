@@ -1,4 +1,4 @@
-    <?php require 'partials/chefheader.php';
+    <?php require 'views/partials/chefheader.php';
     use controllers\PagesController;
     use controllers\PermissionsController;
     use controllers\UserController;

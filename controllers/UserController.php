@@ -15,7 +15,7 @@ class UserController{
         view("noaccess");
     }
     else{
-        view("admin");     
+        view("users/admin");     
     }
                               
     }
@@ -26,7 +26,7 @@ class UserController{
         view("noaccess");
         }
         else{
-        view("chef");    
+        view("users/chef");    
     }
                                  
     }
@@ -36,7 +36,7 @@ class UserController{
         view("noaccess");
     }
     else{
-        view("waiter");     
+        view("users/waiter");     
     }
                                  
     }
@@ -59,7 +59,7 @@ class UserController{
  
                  $allUsers=App::get("database")->selectAllInfo("admin_users","roles");  
                  $roles=App::get("database")->selectAll("roles");  
-        view("user_crud",["allinfos"=>$allUsers,"roles"=>$roles]); 
+        view("users/user_crud",["allinfos"=>$allUsers,"roles"=>$roles]); 
     }
 
     public function user_read(){
@@ -72,7 +72,7 @@ class UserController{
         }
         else{
             if(isPermission("user","read")){
-                view("user_read",["allinfos"=>$all_Infos]);
+                view("users/user_read",["allinfos"=>$all_Infos]);
             }
             else{
                 view("noaccess");
@@ -96,7 +96,7 @@ class UserController{
             {
                  $allUsers=App::get("database")->selectAllInfo("admin_users","roles");  
                  $roles=App::get("database")->selectAll("roles");  
-             view("user_crud",["allinfos"=>$allUsers,"roles"=>$roles]); 
+             view("users/user_crud",["allinfos"=>$allUsers,"roles"=>$roles]); 
             }   
             else{
                  view("noaccess");
