@@ -26,3 +26,55 @@ SELECT u.name,u.email,r.name,f.name,p.name
         JOIN role_permissions rp ON r.id = rp.role_id
         JOIN permissions p ON rp.permissions_id = p.id
         JOIN features f ON p.feature_id=f.id;
+
+
+
+
+
+
+
+        <h3 class="text-secondary bg-light mt-3 p-3 text-center">Features</h3>
+
+                 <div class="row">
+                        <?php foreach ($permission_features as $per_feature): ?>
+                        <div class="col-md-2 p-2">
+                                <!-- checkbox အစ  -->
+                            <label class="form-control">
+                        
+                            <input  type="checkbox" name="features" id="features" value="<?= $per_feature['id'][1]; ?>">
+                                <?= $per_feature['name'][1]; ?> 
+                            </label>
+                             <!-- checkbox အဆုံး  -->
+                        </div>
+                            <?php endforeach; ?>
+                    </div>
+
+
+
+<!-- script အစ -->
+
+<script>
+function loadPermissions() {
+  const role = document.getElementById("role_id").value;
+  if (role === "") {
+    document.getElementById("result").innerHTML = "";
+    return;
+  }
+
+  // AJAX request to PHP
+  const xhr = new XMLHttpRequest();
+  xhr.open("POST", "#", true);
+  xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+  xhr.onload = function() {
+    if (this.status === 200) {
+      document.getElementById("result").innerHTML = this.responseText;
+    }
+  };
+  xhr.send("role=" + role);
+}
+</script>
+
+<!-- srcipt အဆုံး -->
+
+
+

@@ -31,6 +31,8 @@ $router->post("permissions_crud",[PermissionsController::class,"create_permissio
 $router->get("roles_crud",[PermissionsController::class,"roles_crud"]);
 $router->post("roles_crud",[PermissionsController::class,"create_role"]);
 $router->get('permissions_read',[PermissionsController::class,"permissions_read"]);
+$router->get('permissionrole_crud',[PermissionsController::class,"permissionrole_crud"]);
+$router->post('permissionrole_crud',[PermissionsController::class,"create_permissionrole"]);
 
 $router->get("stock_crud",[StockController::class,"stock_crud"]);
 $router->get("stock_read",[StockController::class,"stock_read"]);

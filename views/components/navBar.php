@@ -61,7 +61,13 @@
               </li>
                <li>
                       <?php if(isPermission("roles","crud")):?>
-                      <li><a class="dropdown-item" href="roles_crud">Roles</a></li>
+                      <a class="dropdown-item" href="roles_crud">Roles</a>
+                      <?php endif;?> 
+               </li>
+
+               <li>
+                      <?php if(isPermission("permissionrole","crud")):?>
+                      <a class="dropdown-item" href="permissionrole_crud">Roles By Permission</a>
                       <?php endif;?> 
                </li>
           </ul>

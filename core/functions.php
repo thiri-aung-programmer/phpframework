@@ -23,6 +23,7 @@ function redirect($uri){
 }
 function request($name){                 
     if($_SERVER['REQUEST_METHOD']==='POST'){
+        
         return $_POST[$name];
     }
     if($_SERVER['REQUEST_METHOD']==='GET'){

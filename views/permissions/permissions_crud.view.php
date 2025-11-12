@@ -7,13 +7,12 @@
 <div>
 
    
-    <h2 class="text-success bg-secondary-subtle p-3 text-center fw-bold">All Of The Permissions</h2>
+    <h2 class="text-success bg-secondary-subtle p-3 text-center fw-bold">The Permissions For Various Features</h2>
     <table class="table table-striped table-light w-75 m-auto text-center">
         <tr>
-            <th>PermissionID</th>  
-            <th>Role</th>          
-            <th>Permissions</th>
+            <th>PermissionID</th>            
              <th>Features</th>
+              <th>Permissions</th>
             <th></th>
         </tr>
             <prep>
@@ -23,13 +22,13 @@
         //    print_r(implode("",$_SESSION['feature']) . "\n");
          ?>
          </prep>
-        <?php foreach ($allpermissions as $permission): ?>
+        <?php foreach ($permission_features as $permission_feature): ?>
         <tr>
            
-            <th><?= $permission['ID']; ?></th>
-            <th><?= $permission['Role']; ?></th>
-             <th><?= $permission['Permission']; ?></th>
-            <th><?= $permission['Feature']; ?></th>
+            <th><?= $permission_feature['id'][0]; ?></th>
+           
+             <th><?= $permission_feature['name'][0]; ?></th>
+            <th><?= $permission_feature['name'][1]; ?></th>
             
             <th>
                 <a href="" class="btn btn-warning p-1"><i class="bi bi-pencil-square"></i></a>
@@ -48,19 +47,7 @@
                  
 
 
-                 <div class="row m-3">
-                    <div class="col-md-4  col-10">
-                         <label for="">Role</label>
-                    </div>
-                    <div class="col-md-8 col-10">
-                        <select name="role_id" class="form-control mb-2">
-                            <!-- <option  selected hidden disabled>Choose Your Role</option> -->
-                            <?php foreach ($roles as $role): ?>
-                                <option value="<?= $role->id; ?>"><?= htmlspecialchars($role->name); ?></option>
-                            <?php endforeach; ?>
-                        </select>
-                    </div>                    
-                 </div>
+                 
 
                  <div class="row m-3">
                     <div class="col-md-4  col-10">
@@ -99,6 +86,8 @@
                 </div>
             </form>
 
+
+                              
     </div>
     
 </div>

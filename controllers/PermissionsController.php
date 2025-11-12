@@ -31,20 +31,20 @@ class PermissionsController{
     
     
    
-
     public function permissions_crud(){
-         $all_permissions=App::get("database")->selectAllPermissions();    
-          $roles=App::get("database")->selectAll("roles");
+          
+          $permission_features=App::get("database")->selectAllPermissionsFeatures();         
            $features=App::get("database")->selectAll("features");
+          
 
          if (!isset($_SESSION['role']) ){
             view("noaccess");
              }
         else{
              if(isPermission("permissions","crud")){
-                view("permissions/permissions_crud",["allpermissions"=>$all_permissions,
-                                        "roles"=>$roles,
-                                        "features"=>$features
+                view("permissions/permissions_crud",[
+                                         "permission_features"=>$permission_features,
+                                        "features"=>$features                                    
                                         ]);    
              }
              else{
@@ -54,7 +54,73 @@ class PermissionsController{
          }
 
     }
+    public function permissionrole_crud(){
+          $all_permissions=App::get("database")->selectAllPermissions();    
+          $roles=App::get("database")->selectAll("roles");
+         
+           $permission_features=App::get("database")->selectAllPermissionsFeatures(); 
+
+         if (!isset($_SESSION['role']) ){
+            view("noaccess");
+             }
+        else{
+             if(isPermission("permissionrole","crud")){
+                view("permissions/permissionrole_crud",["allpermissions"=>$all_permissions,
+                                        "roles"=>$roles,                                       
+                                         "permission_features"=>$permission_features
+                                        ]);    
+             }
+             else{
+                view("noaccess");
+             }
+             
+         }
+    }
+
+    public function create_permission(){
+        App::get('database')->insert([
+            'name'=>request("name"),
+            "feature_id"=>request("feature_id")
+        ],"permissions");       
+        
+
+         $permission_features=App::get("database")->selectAllPermissionsFeatures();         
+           $features=App::get("database")->selectAll("features");          
+          
+
+        view("permissions/permissions_crud",[
+                                        "features"=>$features,
+                                        "permission_features"=>$permission_features
+                                        ]);    
+
+    }
    
+    public function create_permissionrole(){
+        $permission_array=request("permissions");       
+       if($permission_array!=null){
+        foreach($permission_array as $per){
+            App::get('database')->insert([
+            'role_id'=>request("role_id"),
+            'permissions_id'=>$per
+        ],"role_permissions");
+       }
+       }
+        
+
+         $all_permissions=App::get("database")->selectAllPermissions();    
+          $roles=App::get("database")->selectAll("roles");           
+
+           $permission_features=App::get("database")->selectAllPermissionsFeatures(); 
+          
+
+        view("permissions/permissionrole_crud",["allpermissions"=>$all_permissions,
+                                        "roles"=>$roles,                                       
+                                        "permission_features"=>$permission_features
+                                        ]);    
+
+    }
+
+
      public function features_crud(){
         $all_features=App::get("database")->selectAllFeatures();   
 
@@ -109,26 +175,6 @@ class PermissionsController{
         $all_roles=App::get("database")->selectAllRoles(); 
          view("permissions/roles_crud",["all_roles"=>$all_roles]); 
     }
-     public function create_permission(){
-        $permission_id=App::get('database')->insertReturnID([
-            'name'=>request("name"),
-            "feature_id"=>request("feature_id")
-        ],"permissions");
-       
-        App::get('database')->insert([
-            'role_id'=>request("role_id"),
-            'permissions_id'=>$permission_id
-        ],"role_permissions");
-
-         $all_permissions=App::get("database")->selectAllPermissions();    
-          $roles=App::get("database")->selectAll("roles");
-           $features=App::get("database")->selectAll("features");
-
-        view("permissions/permissions_crud",["allpermissions"=>$all_permissions,
-                                        "roles"=>$roles,
-                                        "features"=>$features
-                                        ]);    
-
-    }
+     
     
 }
