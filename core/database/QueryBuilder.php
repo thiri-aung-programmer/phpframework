@@ -142,6 +142,13 @@ class QueryBuilder{
         
         return $statement->fetchAll(PDO::FETCH_NAMED);
     }
+    public function selectFeature($fid){
+         $statement=$this->pdo->prepare("SELECT * FROM features WHERE id=$fid;");
+       
+        $statement->execute();
+        
+        return $statement->fetchAll(PDO::FETCH_NAMED);
+    }
     public function selectAllRoles(){
          $statement=$this->pdo->prepare("SELECT * FROM roles;");
        
@@ -163,6 +170,37 @@ class QueryBuilder{
         }
         $qMarks=rtrim($qMarks,","); // နောက်ဆုံးက ","ကို ဖြုတ်ဖို့
         $sql="insert into $table($cols) values($qMarks)";
+        $getDataValues=array_values($dataArr);
+        $statement=$this->pdo->prepare($sql);
+        $statement->execute($getDataValues);
+
+        
+    }
+    public function delete($table,$did){
+
+        
+        $sql="DELETE FROM $table WHERE id=$did";       
+        $statement=$this->pdo->prepare($sql);
+        $statement->execute();
+
+        
+    }
+
+     public function update($dataArr,$table,$id){
+
+        //         $database->insert([
+        //     'uname' => $_POST['name']
+        //         ],"users");
+        //insert into users(name)values ("Kyaw Kyaw");
+        $getDataKeys=array_keys($dataArr); //ထည့်ပေးလိုက်တဲ့ table ထဲက column nameတွေချည်းယူလိုက်တာ 
+        $cols=implode(",",$getDataKeys); // ရလာတဲ့ colname တွေကို , ခံပြီး  string ပြောင်းပေးတာ
+        $qMarks=""; // ? တွေ ထည့်ထားဖို့
+        foreach($getDataKeys as $key){
+            dd($key);
+            $qMarks.="$key=?,";
+        }
+        $qMarks=rtrim($qMarks,","); // နောက်ဆုံးက ","ကို ဖြုတ်ဖို့
+        $sql="update $table set ($cols) = ($qMarks)";
         $getDataValues=array_values($dataArr);
         $statement=$this->pdo->prepare($sql);
         $statement->execute($getDataValues);

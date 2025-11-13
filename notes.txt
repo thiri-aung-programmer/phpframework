@@ -78,3 +78,6 @@ function loadPermissions() {
 
 
 
+// routes/web.php Route::get('features_crud/uid/{id}', [FeatureController::class, 'show']);
+
+<a href="{{ url('features_crud/uid/'.$feature->id) }}">View Feature</a>

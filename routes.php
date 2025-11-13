@@ -21,11 +21,13 @@ $router->get('chef',[UserController::class,"chef"]);
 $router->get('waiter',[UserController::class,"waiter"]);
 $router->get('user_read',[UserController::class,"user_read"]);
 $router->get('user_crud',[UserController::class,"user_crud"]);
+$router->get('user_delete',[UserController::class,"user_delete"]);
 $router->post('user_crud',[UserController::class,"create_user"]);
 // $router->get('users',[UserController::class,"index"]);
 
 $router->get('features_crud',[PermissionsController::class,"features_crud"]);
 $router->post('features_crud',[PermissionsController::class,"create_feature"]);
+$router->get('feature_update',[PermissionsController::class,"feature_update"]);
 $router->get("permissions_crud",[PermissionsController::class,"permissions_crud"]);
 $router->post("permissions_crud",[PermissionsController::class,"create_permission"]);
 $router->get("roles_crud",[PermissionsController::class,"roles_crud"]);

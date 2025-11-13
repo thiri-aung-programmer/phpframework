@@ -138,7 +138,19 @@ class PermissionsController{
          }
 
     }
-    
+   
+    public function feature_update(){
+       $uid=$_GET['id'];
+       $_SESSION['uid']=$_GET['id'];
+        // $uid=request("uid");
+            App::get("database")->update([
+            'name'=>request("name")
+        ],"features",$uid);
+         view("permissions/features_crud",["all_features"=>$all_features]); 
+    }
+    public function feature_update_Textbox(){
+
+    }
 
      public function roles_crud(){
          $all_roles=App::get("database")->selectAllRoles();   

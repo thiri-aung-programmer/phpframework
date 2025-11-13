@@ -106,6 +106,20 @@ class UserController{
          // view("admin/user");  
         // view("admin/user",["allinfos"=>App::get("database")->selectAllInfo("admin_users","roles")]);                                        
     }
+     public function user_delete(){
+         $did=$_GET['did'];
+        //  dd($did);
+         App::get("database")->delete("admin_users",$did);
+         if(isPermission("user","crud"))
+            {
+                 $allUsers=App::get("database")->selectAllInfo("admin_users","roles");  
+                 $roles=App::get("database")->selectAll("roles");  
+             view("users/user_crud",["allinfos"=>$allUsers,"roles"=>$roles]); 
+            }   
+            else{
+                 view("noaccess");
+            }
+    }
 
 
 }
