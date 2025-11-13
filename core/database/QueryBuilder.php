@@ -149,6 +149,12 @@ class QueryBuilder{
         
         return $statement->fetchAll(PDO::FETCH_NAMED);
     }
+    public function updateFeature($table,$name,$id){
+          $data=[$name,$id];
+        $sql="UPDATE $table SET name=? WHERE id=?";       
+        $statement=$this->pdo->prepare($sql);
+        $statement->execute($data);
+    }
     public function selectAllRoles(){
          $statement=$this->pdo->prepare("SELECT * FROM roles;");
        

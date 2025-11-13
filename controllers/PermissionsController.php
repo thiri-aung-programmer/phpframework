@@ -140,18 +140,56 @@ class PermissionsController{
     }
    
     public function feature_update(){
+       
        $uid=$_GET['id'];
        $_SESSION['uid']=$_GET['id'];
-        // $uid=request("uid");
-            App::get("database")->update([
+       $updateInfo=App::get("database")->selectFeature($uid);
+       $all_features=App::get("database")->selectAllFeatures(); 
+        //     App::get("database")->update([
+        //     'name'=>request("name")
+        // ],"features",$uid);
+         view("permissions/features_crud",["all_features"=>$all_features,
+        "updateInfo"=>$updateInfo]); 
+    }
+    
+    public function feature_realupdate(){
+       
+            
+        if(isset($_SESSION['uid'])){
+             $name=$_POST["name"];
+             $id=$_SESSION['uid'];
+             App::get("database")->updateFeature("features",$name,$id);
+             unset($_SESSION['uid']);
+            
+        }
+        else{
+            App::get('database')->insert([
             'name'=>request("name")
-        ],"features",$uid);
+        ],"features");
+        
+        }
+        $all_features=App::get("database")->selectAllFeatures(); 
          view("permissions/features_crud",["all_features"=>$all_features]); 
-    }
-    public function feature_update_Textbox(){
+        
+            
+        }
+       
 
+    
+     public function feature_delete(){
+         $did=$_GET['did'];
+        //  dd($did);
+         App::get("database")->delete("features",$did);
+         if(isPermission("features","crud"))
+            {
+                  $all_features=App::get("database")->selectAllFeatures(); 
+                view("permissions/features_crud",["all_features"=>$all_features,
+             ]); 
+            }   
+            else{
+                 view("noaccess");
+            }
     }
-
      public function roles_crud(){
          $all_roles=App::get("database")->selectAllRoles();   
 

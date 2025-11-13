@@ -28,6 +28,8 @@ $router->post('user_crud',[UserController::class,"create_user"]);
 $router->get('features_crud',[PermissionsController::class,"features_crud"]);
 $router->post('features_crud',[PermissionsController::class,"create_feature"]);
 $router->get('feature_update',[PermissionsController::class,"feature_update"]);
+$router->post('feature_update',[PermissionsController::class,"feature_realupdate"]);
+$router->get('feature_delete',[PermissionsController::class,"feature_delete"]);
 $router->get("permissions_crud",[PermissionsController::class,"permissions_crud"]);
 $router->post("permissions_crud",[PermissionsController::class,"create_permission"]);
 $router->get("roles_crud",[PermissionsController::class,"roles_crud"]);
