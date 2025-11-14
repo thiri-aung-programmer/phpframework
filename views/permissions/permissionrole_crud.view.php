@@ -60,21 +60,9 @@
 
             <!-- --------- permisssion နဲ့ feature ကို checkbox နဲ့ ရွေးတဲ form ဆောက်တာ အစ--------------- -->
             <h2 class="text-success bg-secondary-subtle p-3 text-center fw-bold mt-3">Insert New Permission</h2>
-             <form class="w-100 p-3 bg-light shadow-sm"   method="post" id="form1">
-                <div class="row m-3">
-                    <div class="col-md-4  col-10">
-                         <label for="">Role</label> 
-                    </div>
-                    <div class="col-md-8 col-10">
-                        <select name="role_id" id="role_id" class="form-control mb-2" onchange="changeRole();">
-                            <!-- <option  selected hidden disabled>Choose Your Role</option> -->
-                            <?php foreach ($roles as $role): ?>
-                                <option value="<?= $role->id;  ?>"><?= htmlspecialchars($role->name) ?? ''; ?></option>
-                            <?php endforeach; ?>
-                        </select>
-                    </div>                    
-                 </div>
-            </form>
+             <!-- <form class="w-100 p-3 bg-light shadow-sm"   method="post" id="form1">
+                
+            </form> -->
     <!-- script နဲ့ php ထဲထည့်တာရောနှစ်ခုစလုံး စမ်းထည့်ကြည့် အစ -->
 
    
@@ -89,24 +77,36 @@
             
     <!-- script နဲ့ php ထဲထည့်တာရောနှစ်ခုစလုံး စမ်းထည့်ကြည့် အဆုံး -->
                        <!-- Checkbox list -->      
-            <div id="permissionContainer" class="row">
+            <!-- <div id="permissionContainer" class="row"> -->
                     <!-- JS က ဒီနေရာမှာ checkbox list generate လုပ်မယ် -->
-            </div>
+            <!-- </div> -->
             <form class="w-100 p-3 bg-light shadow-sm" action="permissionrole_crud" method="post" id="form2">
                     <!-- ဒီနေရာက Role ကို selectbox ထည့်ထားတဲ့ဟာ အဲဒါကို အပေါ်မှာ ခဏထည့်တာ  -->
-                       <input type="text" value="<?=$_POST['selected_value'] ?? ''?>" id="role" name="role">       
-
+                       <!-- <input type="text" value="//$_POST['selected_value'] ?? ''" id="role" name="role">        -->
+                    <div class="row m-3">
+                    <div class="col-md-4  col-10">
+                         <label for="">Role</label> 
+                    </div>
+                    <div class="col-md-8 col-10">
+                        <select name="role_id" id="role_id" class="form-control mb-2" onchange="changeRole();">
+                            <!-- <option  selected hidden disabled>Choose Your Role</option> -->
+                            <?php foreach ($roles as $role): ?>
+                                <option value="<?= $role->id;  ?>"><?= htmlspecialchars($role->name) ?? ''; ?></option>
+                            <?php endforeach; ?>
+                        </select>
+                    </div>                    
+                 </div>
                  <?php 
-                 $selectedPermissions=[];
+                // $selectedPermissions=[];
                             // echo $selected;
-                     if(isset($_POST['selected_value'])) {
+                    // if(isset($_POST['selected_value'])) {
                    
                     //     echo $_POST['selected_vlaue'];
-                        $selectedPermissions=App::get('database')->selectAllPermissionsByRoleId($_POST['selected_value']);
+                       // $selectedPermissions=App::get('database')->selectAllPermissionsByRoleId($_POST['selected_value']);
                        
                    //}
                      
-                     }
+                    // }
                  ?>
                      <!-- <p id="msg"></p> -->
                 <h3 class="text-secondary bg-light mt-3 p-3 text-center">Permissions And Features</h3>
