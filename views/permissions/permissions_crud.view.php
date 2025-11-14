@@ -32,7 +32,7 @@
             
             <th>
                 <a href="" class="btn btn-warning p-1"><i class="bi bi-pencil-square"></i></a>
-                <a href="" class="btn btn-danger p-1" onclick="return confirm('Are You Sure to delete?')"><i class="bi bi-trash3-fill"></i></a>
+                <a href="permission_delete?did=<?= $permission_feature['id'][0]?>" class="btn btn-danger p-1" onclick="return confirm('Are You Sure to delete?')"><i class="bi bi-trash3-fill"></i></a>
             </th>
         </tr>  
 
