@@ -34,6 +34,7 @@ $router->get("permissions_crud",[PermissionsController::class,"permissions_crud"
 $router->post("permissions_crud",[PermissionsController::class,"create_permission"]);
 $router->get('permission_delete',[PermissionsController::class,"permission_delete"]);
 $router->get("roles_crud",[PermissionsController::class,"roles_crud"]);
+$router->get("role_delete",[PermissionsController::class,"role_delete"]);
 $router->post("roles_crud",[PermissionsController::class,"create_role"]);
 $router->get('permissions_read',[PermissionsController::class,"permissions_read"]);
 $router->get('permissionrole_crud',[PermissionsController::class,"permissionrole_crud"]);

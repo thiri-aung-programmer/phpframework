@@ -72,6 +72,20 @@ class PermissionsController{
                  view("noaccess");
             }
     }
+     public function role_delete(){
+        $did=$_GET['did'];
+        //  dd($did);
+         App::get("database")->delete("roles",$did);
+         if(isPermission("roles","crud"))
+            {
+               $all_roles=App::get("database")->selectAllRoles();   
+                 view("permissions/roles_crud",["all_roles"=>$all_roles]);
+             
+            }   
+            else{
+                 view("noaccess");
+            }
+    }
     public function permissionrole_crud(){
           $all_permissions=App::get("database")->selectAllPermissions();    
           $roles=App::get("database")->selectAll("roles");
