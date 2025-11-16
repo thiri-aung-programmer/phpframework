@@ -22,6 +22,8 @@ $router->get('waiter',[UserController::class,"waiter"]);
 $router->get('user_read',[UserController::class,"user_read"]);
 $router->get('user_crud',[UserController::class,"user_crud"]);
 $router->get('user_delete',[UserController::class,"user_delete"]);
+$router->get('user_update',[UserController::class,"user_update"]);
+$router->post('user_update',[UserController::class,"user_realupdate"]);
 $router->post('user_crud',[UserController::class,"create_user"]);
 // $router->get('users',[UserController::class,"index"]);
 
@@ -33,13 +35,19 @@ $router->get('feature_delete',[PermissionsController::class,"feature_delete"]);
 $router->get("permissions_crud",[PermissionsController::class,"permissions_crud"]);
 $router->post("permissions_crud",[PermissionsController::class,"create_permission"]);
 $router->get('permission_delete',[PermissionsController::class,"permission_delete"]);
+$router->get('permission_update',[PermissionsController::class,"permission_update"]);
+$router->post('permission_update',[PermissionsController::class,"permission_realupdate"]);
 $router->get("roles_crud",[PermissionsController::class,"roles_crud"]);
 $router->get("role_delete",[PermissionsController::class,"role_delete"]);
+$router->get('role_update',[PermissionsController::class,"role_update"]);
+$router->post('role_update',[PermissionsController::class,"role_realupdate"]);
 $router->post("roles_crud",[PermissionsController::class,"create_role"]);
 $router->get('permissions_read',[PermissionsController::class,"permissions_read"]);
 $router->get('permissionrole_crud',[PermissionsController::class,"permissionrole_crud"]);
 $router->post('permissionrole_crud',[PermissionsController::class,"create_permissionrole"]);
 $router->get('permissionrole_delete',[PermissionsController::class,"permissionrole_delete"]);
+$router->get('permissionrole_update',[PermissionsController::class,"permissionrole_update"]);
+$router->post('permissionrole_update',[PermissionsController::class,"permissionrole_realupdate"]);
 
 $router->get("stock_crud",[StockController::class,"stock_crud"]);
 $router->get("stock_read",[StockController::class,"stock_read"]);
