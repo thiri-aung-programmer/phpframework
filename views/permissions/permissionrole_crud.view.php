@@ -45,7 +45,7 @@
             <th><?= $permission['Feature'] ?? '';  ?></th>
             
             <th>
-                <a href="" class="btn btn-warning p-1"><i class="bi bi-pencil-square"></i></a>
+                <a href="permissionrole_update?id=<?= $permission['ID']?>" class="btn btn-warning p-1"><i class="bi bi-pencil-square"></i></a>
                 <a href="permissionrole_delete?did=<?= $permission['ID']?>" class="btn btn-danger p-1" onclick="return confirm('Are You Sure to delete?')"><i class="bi bi-trash3-fill"></i></a>
             </th>
         </tr>  
@@ -80,7 +80,7 @@
             <!-- <div id="permissionContainer" class="row"> -->
                     <!-- JS က ဒီနေရာမှာ checkbox list generate လုပ်မယ် -->
             <!-- </div> -->
-            <form class="w-100 p-3 bg-light shadow-sm" action="permissionrole_crud" method="post" id="form2">
+            <form class="w-100 p-3 bg-light shadow-sm" action="permissionrole_update" method="post" id="form2">
                     <!-- ဒီနေရာက Role ကို selectbox ထည့်ထားတဲ့ဟာ အဲဒါကို အပေါ်မှာ ခဏထည့်တာ  -->
                        <!-- <input type="text" value="//$_POST['selected_value'] ?? ''" id="role" name="role">        -->
                     <div class="row m-3">

@@ -122,4 +122,42 @@ class UserController{
     }
 
 
+    public function user_update(){
+       
+       $uid=$_GET['id'];
+       $_SESSION['uid']=$_GET['id'];
+       $updateInfo=App::get("database")->selectAllWithID("admin_users",$uid);
+       $all_users=App::get("database")->selectAll("admin_users"); 
+        $roles=App::get("database")->selectAll("roles");
+        //     App::get("database")->update([
+        //     'name'=>request("name")
+        // ],"features",$uid);
+         view("users/user_crud",["allinfos"=>$all_users,"roles"=>$roles,
+        "updateInfo"=>$updateInfo]); 
+    }
+    
+    public function user_realupdate(){
+       
+            
+        if(isset($_SESSION['uid'])){
+             $name=$_POST["name"];
+             $id=$_SESSION['uid'];
+            //  App::get("database")->updateFeature("features",$name,$id);
+             App::get("database")->update(['name'=>$name],"features",$id);
+             unset($_SESSION['uid']);
+            
+        }
+        else{
+            App::get('database')->insert([
+            'name'=>request("name")
+        ],"features");
+        
+        }
+        $all_features=App::get("database")->selectAllFeatures(); 
+         view("permissions/features_crud",["all_features"=>$all_features]); 
+        
+            
+        }
+
+
 }

@@ -77,6 +77,13 @@ class QueryBuilder{
         $statement->execute();
         return $count=$statement->fetchAll(PDO::FETCH_OBJ);
     }
+     public function selectAllWithID($table,$id){
+         $statement=$this->pdo->prepare("SELECT * FROM $table WHERE id=$id;");
+       
+        $statement->execute();
+        
+        return $statement->fetchAll(PDO::FETCH_NAMED);
+    }
     public function selectAllInfo($table1,$table2)
     {
         // $getDataValues=array_values($dataArr);
@@ -149,12 +156,12 @@ class QueryBuilder{
         
         return $statement->fetchAll(PDO::FETCH_NAMED);
     }
-    public function updateFeature($table,$name,$id){
-          $data=[$name,$id];
-        $sql="UPDATE $table SET name=? WHERE id=?";       
-        $statement=$this->pdo->prepare($sql);
-        $statement->execute($data);
-    }
+    // public function updateFeature($table,$name,$id){
+    //       $data=[$name,$id];
+    //     $sql="UPDATE $table SET name=? WHERE id=?";       
+    //     $statement=$this->pdo->prepare($sql);
+    //     $statement->execute($data);
+    // }
     
     public function selectAllRoles(){
          $statement=$this->pdo->prepare("SELECT * FROM roles;");

@@ -47,9 +47,9 @@
             <th><?= $info['name'][1]; ?></th>
             <th>
                 <?php if($info['name'][1]=="admin"):?>
-                    <a href="" class="btn btn-warning p-1"><i class="bi bi-pencil-square"></i></a>
+                    <a href="user_update?id=<?= $info['id'][0]?>" class="btn btn-warning p-1"><i class="bi bi-pencil-square"></i></a>
                 <?php else : ?>
-                    <a href="" class="btn btn-warning p-1"><i class="bi bi-pencil-square"></i></a>
+                    <a href="user_update?id=<?= $info['id'][0]?>" class="btn btn-warning p-1"><i class="bi bi-pencil-square"></i></a>
                     <a href="user_delete?did=<?= $info['id'][0]?>" class="btn btn-danger p-1" onclick="return confirm('Are You Sure to delete?')"><i class="bi bi-trash3-fill"></i></a>
                 <?php endif; ?>
                 
@@ -62,7 +62,7 @@
 
      <div class="w-75 m-auto">
         <h2 class="text-success bg-secondary-subtle p-3 text-center fw-bold mt-3">Insert New User</h2>
-            <form class="w-100 p-3 bg-light shadow-sm" action="user_crud" method="post">
+            <form class="w-100 p-3 bg-light shadow-sm" action="user_update" method="post">
 
                  <div class="row m-3">
                     <div class="col-md-4  col-10">

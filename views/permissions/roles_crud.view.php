@@ -29,7 +29,7 @@
             <th><?= $role['name']; ?></th>
             
             <th>
-                <a href="" class="btn btn-warning p-1"><i class="bi bi-pencil-square"></i></a>
+                <a href="role_update?id=<?= $role['id']?>" class="btn btn-warning p-1"><i class="bi bi-pencil-square"></i></a>
                 <a href="role_delete?did=<?= $role['id']?>" class="btn btn-danger p-1" onclick="return confirm('Are You Sure to delete?')"><i class="bi bi-trash3-fill"></i></a>
             </th>
         </tr>  
@@ -40,7 +40,7 @@
 
      <div class="w-75 m-auto">
         <h2 class="text-success bg-secondary-subtle p-3 text-center fw-bold mt-3">Insert New Role</h2>
-            <form class="w-100 p-3 bg-light shadow-sm" action="roles_crud" method="post">
+            <form class="w-100 p-3 bg-light shadow-sm" action="role_update" method="post">
 
                  <div class="row m-3">
                     <div class="col-md-4  col-10">
