@@ -211,7 +211,8 @@ class PermissionsController{
         if(isset($_SESSION['uid'])){
              $name=$_POST["name"];
              $id=$_SESSION['uid'];
-             App::get("database")->updateFeature("features",$name,$id);
+            //  App::get("database")->updateFeature("features",$name,$id);
+             App::get("database")->update(['name'=>$name],"features",$id);
              unset($_SESSION['uid']);
             
         }

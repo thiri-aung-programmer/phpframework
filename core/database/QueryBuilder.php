@@ -155,6 +155,7 @@ class QueryBuilder{
         $statement=$this->pdo->prepare($sql);
         $statement->execute($data);
     }
+    
     public function selectAllRoles(){
          $statement=$this->pdo->prepare("SELECT * FROM roles;");
        
@@ -199,14 +200,16 @@ class QueryBuilder{
         //         ],"users");
         //insert into users(name)values ("Kyaw Kyaw");
         $getDataKeys=array_keys($dataArr); //ထည့်ပေးလိုက်တဲ့ table ထဲက column nameတွေချည်းယူလိုက်တာ 
-        $cols=implode(",",$getDataKeys); // ရလာတဲ့ colname တွေကို , ခံပြီး  string ပြောင်းပေးတာ
+       // $cols=implode(",",$getDataKeys); // ရလာတဲ့ colname တွေကို , ခံပြီး  string ပြောင်းပေးတာ
         $qMarks=""; // ? တွေ ထည့်ထားဖို့
         foreach($getDataKeys as $key){
-            dd($key);
+           // dd($key);
             $qMarks.="$key=?,";
         }
+        
         $qMarks=rtrim($qMarks,","); // နောက်ဆုံးက ","ကို ဖြုတ်ဖို့
-        $sql="update $table set ($cols) = ($qMarks)";
+        // dd($qMarks);
+        $sql="update $table set $qMarks WHERE id=$id";
         $getDataValues=array_values($dataArr);
         $statement=$this->pdo->prepare($sql);
         $statement->execute($getDataValues);
