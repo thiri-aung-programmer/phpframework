@@ -264,6 +264,43 @@ class PermissionsController{
          }
 
     }
+
+    public function role_update(){
+       
+       $uid=$_GET['id'];
+       $_SESSION['uid']=$_GET['id'];
+       $updateInfo=App::get("database")->selectAllWithID("roles",$uid);
+       $all_roles=App::get("database")->selectAll("roles"); 
+        //     App::get("database")->update([
+        //     'name'=>request("name")
+        // ],"features",$uid);
+         view("permissions/roles_crud",["all_features"=>$all_roles,
+        "updateInfo"=>$updateInfo]); 
+    }
+    
+    public function role_realupdate(){
+       
+            
+        if(isset($_SESSION['uid'])){
+             $name=$_POST["name"];
+             $id=$_SESSION['uid'];
+            //  App::get("database")->updateFeature("features",$name,$id);
+             App::get("database")->update(['name'=>$name],"roles",$id);
+             unset($_SESSION['uid']);
+            
+        }
+        else{
+            App::get('database')->insert([
+            'name'=>request("name")
+        ],"roles");
+        
+        }
+        $all_roles=App::get("database")->selectAll("roles"); 
+         view("permissions/features_crud",["all_features"=>$all_roles]); 
+        
+            
+        }
+       
     
     public function create_feature(){
         App::get('database')->insert([
