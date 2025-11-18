@@ -38,7 +38,17 @@
 
         <?php endforeach; ?>
     </table>
+            <?php 
+            $uname="";
+                if(isset($updateInfo)){
+                    foreach($updateInfo as $update){
+                        $uname=$update['name'];
+                        $fid=$update['feature_id'];
+                        // dd($uname);
+                    }
 
+            }
+            ?>
 
      <div class="w-75 m-auto">
         <h2 class="text-success bg-secondary-subtle p-3 text-center fw-bold mt-3">Insert New Permission</h2>
@@ -57,7 +67,12 @@
                         <select name="feature_id" class="form-control mb-2">
                             <!-- <option  selected hidden disabled>Choose Your Feature</option> -->
                             <?php foreach ($features as $feature): ?>
-                                <option value="<?= $feature->id; ?>"><?= htmlspecialchars($feature->name); ?></option>
+                                <?php if($feature->id==$fid): ?>
+                                    <option value="<?= $feature->id; ?>" selected><?= htmlspecialchars($feature->name); ?></option>
+                                <?php else : ?>
+                                    <option value="<?= $feature->id; ?>"><?= htmlspecialchars($feature->name); ?></option>
+                                <?php endif; ?>
+                                
                             <?php endforeach; ?>
                         </select>
                     </div>                    
@@ -69,7 +84,7 @@
                          <label for="">Name</label>
                     </div>
                     <div class="col-md-8 col-10">
-                         <input type="text" class="form-control" id="name" name="name">
+                         <input type="text" class="form-control" id="name" name="name" value="<?= $uname;?>">
                     </div>
                  </div>
 

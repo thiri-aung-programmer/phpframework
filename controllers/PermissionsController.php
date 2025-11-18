@@ -274,7 +274,7 @@ class PermissionsController{
         //     App::get("database")->update([
         //     'name'=>request("name")
         // ],"features",$uid);
-         view("permissions/roles_crud",["all_features"=>$all_roles,
+         view("permissions/roles_crud",["all_roles"=>$all_roles,
         "updateInfo"=>$updateInfo]); 
     }
     
@@ -296,11 +296,57 @@ class PermissionsController{
         
         }
         $all_roles=App::get("database")->selectAll("roles"); 
-         view("permissions/features_crud",["all_features"=>$all_roles]); 
+         view("permissions/roles_crud",["all_roles"=>$all_roles]); 
         
             
         }
+    
+        public function permission_update(){
        
+       $uid=$_GET['id'];
+       $_SESSION['uid']=$_GET['id'];
+       $updateInfo=App::get("database")->selectAllWithID("permissions",$uid);
+       $all_permissions=App::get("database")->selectAll("permissions"); 
+        //     App::get("database")->update([
+        //     'name'=>request("name")
+        // ],"features",$uid);
+         view("permissions/permissions_crud",["all_permissions"=>$all_permissions,
+        "updateInfo"=>$updateInfo]); 
+    }
+    
+    public function permission_realupdate(){
+       
+            
+        if(isset($_SESSION['uid'])){
+             $name=$_POST["name"];
+             $fid=$_POST['feature_id'];
+             $id=$_SESSION['uid'];
+            //  App::get("database")->updateFeature("features",$name,$id);
+             App::get("database")->update(['name'=>$name,'feature_id'=>$fid],"permissions",$id);
+             unset($_SESSION['uid']);
+            
+        }
+        else{
+           App::get('database')->insert([
+            'name'=>request("name"),
+            "feature_id"=>request("feature_id")
+        ],"permissions");       
+        
+
+       
+        
+        }
+         $permission_features=App::get("database")->selectAllPermissionsFeatures();         
+           $features=App::get("database")->selectAll("features");          
+          
+
+        view("permissions/permissions_crud",[
+                                        "features"=>$features,
+                                        "permission_features"=>$permission_features
+                                        ]);   
+        
+            
+        }
     
     public function create_feature(){
         App::get('database')->insert([
