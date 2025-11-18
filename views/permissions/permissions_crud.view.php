@@ -95,7 +95,13 @@
 
                 <div class="row m-3 g-4 text-center justify-content-center">
                     <div class="col-md-4">
-                        <button type="submit" class="btn btn-primary">Insert</button>
+                        <?php if(isset($updateInfo)):?>
+                            <input type="submit" name="update"  class="btn btn-info" value="Update">
+                            <!-- <button type="submit" class="btn btn-info">Update</button> -->
+                        <?php else : ?>
+                            <input type="submit" name="insert" class="btn btn-primary" value="Insert">
+                            <!-- <button type="submit" class="btn btn-primary">Insert</button> -->
+                        <?php endif;?>
                         <button type="reset" class="btn btn-danger">Clear</button>
                     </div>                    
                 </div>
