@@ -40,6 +40,7 @@
     </table>
             <?php 
             $uname="";
+            $fid="";
                 if(isset($updateInfo)){
                     foreach($updateInfo as $update){
                         $uname=$update['name'];

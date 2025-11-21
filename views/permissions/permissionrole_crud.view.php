@@ -53,7 +53,18 @@
         <?php endforeach; ?>
     </table>
 
+                 <?php 
+                    $rid="";
+                    $pid="";
+                if(isset($updateInfo)){
+                    foreach($updateInfo as $update){
+                        $rid=$update['role_id'];
+                        $pid=$update['permissions_id'];
+                        // dd($uname);
+                    }
 
+            }
+            ?>
 
      <div class="w-75 m-auto">        
 
@@ -91,7 +102,11 @@
                         <select name="role_id" id="role_id" class="form-control mb-2" onchange="changeRole();">
                             <!-- <option  selected hidden disabled>Choose Your Role</option> -->
                             <?php foreach ($roles as $role): ?>
-                                <option value="<?= $role->id;  ?>"><?= htmlspecialchars($role->name) ?? ''; ?></option>
+                                <?php if($role->id==$rid): ?>
+                                <option value="<?= $role->id; ?>" selected><?= htmlspecialchars($role->name) ?? ''; ?></option>
+                                <?php else : ?>
+                                    <option value="<?= $role->id;  ?>"><?= htmlspecialchars($role->name) ?? ''; ?></option>
+                               <?php endif; ?>     
                             <?php endforeach; ?>
                         </select>
                     </div>                    
@@ -136,7 +151,13 @@
                  
                     <div class="row m-3 g-4 text-center justify-content-center">
                     <div class="col-md-4">
-                        <button type="submit" class="btn btn-primary">Insert</button>
+                         <?php if(isset($updateInfo)):?>
+                            <input type="submit" name="update"  class="btn btn-info" value="Update">
+                            <!-- <button type="submit" class="btn btn-info">Update</button> -->
+                        <?php else : ?>
+                            <input type="submit" name="insert" class="btn btn-primary" value="Insert">
+                            <!-- <button type="submit" class="btn btn-primary">Insert</button> -->
+                        <?php endif;?>
                         <button type="reset" class="btn btn-danger">Clear</button>
                     </div>                    
                 </div>
